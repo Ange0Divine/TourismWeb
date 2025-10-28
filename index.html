@@ -24,10 +24,6 @@
     <a href="quote.html" class="nav-btn">Get a Quote</a>
 </nav>
 
-
-
-
-
     <!-- Hero Section -->
     <section class="hero" id="home">
         <video id="bg-video" autoplay muted loop playsinline>
@@ -83,42 +79,41 @@
         </div>
         <div class="categories-container">
             <div class="categories-grid" id="categoriesGrid">
-                <div class="category-card">
+                <a href="primates.html" class="category-card">
                     <img src="https://images.unsplash.com/photo-1736611248963-f889f98f963a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEdvcmlsbGElMjBUcmVra2luZyUyMChSd2FuZGElMkZVZ2FuZGEpJTJDJTIwQ2hpbXBhbnplZSUyMFRyYWNraW5nJTJDJTIwR29sZGVuJTIwTW9ua2V5JTIwVHJhY2tpbmcufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Primate Adventures">
                     <div class="category-overlay">
                         <h3>Primate Adventures</h3>
                         <p>24 Tours</p>
                     </div>
-                </div>
-                <div class="category-card">
-                    
+                </a>
+                <a href="classics.html" class="category-card">
                     <img src="https://plus.unsplash.com/premium_photo-1725400821251-8b64c2f00605?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGJpZyUyMGZpdmUlMjBnYW1lJTIwZHJpdmVzJTJDJTIwYm9hdCUyMHNhZmFyaXMlMkMlMjBiaXJkd2F0Y2hpbmclMjBpbiUyMG5hdGlvbmFsJTIwcGFya3MlMjAocXVlZW4lMjBlbGl6YWJldGglMkMlMjBtdXJjaGlzb24lMjBmYWxscykufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Classic Wildlife Safaris">
                     <div class="category-overlay">
-                        <h3 >Classic Wildlife Safaris</h3>
+                        <h3>Classic Wildlife Safaris</h3>
                         <p>18 Tours</p>
                     </div>
-                </div>
-                <div class="category-card center">
+                </a>
+                <a href="mountain-hikes.html" class="category-card center">
                     <img src="https://plus.unsplash.com/premium_photo-1661908873366-e9ca6f3c7fa7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI5fHx8ZW58MHx8fHx8&auto=format&fit=crop&q=60&w=600" alt="Mountain & Volcanic Hikes">
                     <div class="category-overlay">
                         <h3>Mountain & Volcanic Hikes</h3>
                         <p>32 Tours</p>
                     </div>
-                </div>
-                <div class="category-card">
+                </a>
+                <a href="cultural-tours.html" class="category-card">
                     <img src="https://plus.unsplash.com/premium_photo-1687131786909-012d60e84943?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8VmlsbGFnZSUyMHZpc2l0cyUyQyUyMGxvY2FsJTIwbWFya2V0cyUyQyUyMGN1bHR1cmFsJTIwcGVyZm9ybWFuY2VzJTJDJTIwY29mZmVlJTJGdGVhJTIwcGxhbnRhdGlvbiUyMHRvdXJzJTIwaW4lMjB1Z2FuZGElMjBhbmQlMjByd2FuZGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Cultural & Community Tours">
                     <div class="category-overlay">
                         <h3>Cultural & Community Tours</h3>
                         <p>15 Tours</p>
                     </div>
-                </div>
-                <div class="category-card">
+                </a>
+                <a href="kigali-tours.html" class="category-card">
                     <img src="https://media.istockphoto.com/id/1442433155/photo/landscape-of-modern-office-buildings-under-a-blue-cloudy-sky-in-kigali-rwanda.webp?a=1&b=1&s=612x612&w=0&k=20&c=2VR46Eg25hXBvGh54aAHUPRxExgtwGsQSxiFMUlVZUQ=" alt="Kigali City & Day Trips">
                     <div class="category-overlay">
                         <h3>Kigali City & Day Trips</h3>
                         <p>12 Tours</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -514,8 +509,10 @@
         // WhatsApp redirect
         document.getElementById('whatsappCTA').addEventListener('click', function(e) {
             e.preventDefault();
-            const whatsappNumber = '250785241608'; // REPLACE WITH YOUR NUMBER
+            const whatsappNumber = '250785241608';
             const message = encodeURIComponent('Hi! I need help planning my safari trip. Can you assist me?');
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
         });
     </script>
+</body>
+</html>

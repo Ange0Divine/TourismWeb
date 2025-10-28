@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seek Wild Africa - Your Primate Odyssey, Made Simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+    <div class="logo">🦍 Seek Wild Africa</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="plan.html">Plan Your Trip</a></li>
+        <li><a href="#safaris">Safaris</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="quote.html" class="nav-btn">Get a Quote</a>
+</nav>
+
+
+
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video id="bg-video" autoplay muted loop playsinline>
+            <source src="https://v.ftcdn.net/13/99/21/47/700_F_1399214789_VnF98z2hP6OVFcAjqLQ72ysWe7j04s0c_ST.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1>Natural Wonder<br>Of The World</h1>
+            <p>Discover Rwanda & Uganda's breathtaking primates and wildlife</p>
+            <div class="hero-buttons">
+                <a href="#safaris" class="btn-primary">Explore Now</a>
+                <a href="#whatsapp" class="btn-secondary" id="whatsappCTA">Chat on WhatsApp</a>
+            </div>
+        </div>
+
+        <button class="close-video" id="closeBtn">✕ Close Video</button>
+    </section>
+
+    <!-- Search Box -->
+    <div class="search-box">
+        <div class="search-container">
+            <div class="search-field">
+                <label>Location</label>
+                <select>
+                    <option>Rwanda</option>
+                    <option>Uganda</option>
+                    <option>Both Countries</option>
+                </select>
+            </div>
+            <div class="search-field">
+                <label>Date</label>
+                <input type="date">
+            </div>
+            <div class="search-field">
+                <label>Type</label>
+                <select>
+                    <option>Gorilla Trekking</option>
+                    <option>Chimpanzee Tracking</option>
+                    <option>Wildlife Safari</option>
+                    <option>Cultural Tours</option>
+                </select>
+            </div>
+            <button class="search-btn">Search</button>
+        </div>
+    </div>
+
+    <!-- Safari Categories -->
+    <section>
+        <div class="section-header">
+            <p class="section-subtitle">CHOOSE YOUR CATEGORY</p>
+            <h2 class="section-title">Safari Categories</h2>
+        </div>
+        <div class="categories-container">
+            <div class="categories-grid" id="categoriesGrid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1736611248963-f889f98f963a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEdvcmlsbGElMjBUcmVra2luZyUyMChSd2FuZGElMkZVZ2FuZGEpJTJDJTIwQ2hpbXBhbnplZSUyMFRyYWNraW5nJTJDJTIwR29sZGVuJTIwTW9ua2V5JTIwVHJhY2tpbmcufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Primate Adventures">
+                    <div class="category-overlay">
+                        <h3>Primate Adventures</h3>
+                        <p>24 Tours</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    
+                    <img src="https://plus.unsplash.com/premium_photo-1725400821251-8b64c2f00605?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGJpZyUyMGZpdmUlMjBnYW1lJTIwZHJpdmVzJTJDJTIwYm9hdCUyMHNhZmFyaXMlMkMlMjBiaXJkd2F0Y2hpbmclMjBpbiUyMG5hdGlvbmFsJTIwcGFya3MlMjAocXVlZW4lMjBlbGl6YWJldGglMkMlMjBtdXJjaGlzb24lMjBmYWxscykufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Classic Wildlife Safaris">
+                    <div class="category-overlay">
+                        <h3 >Classic Wildlife Safaris</h3>
+                        <p>18 Tours</p>
+                    </div>
+                </div>
+                <div class="category-card center">
+                    <img src="https://plus.unsplash.com/premium_photo-1661908873366-e9ca6f3c7fa7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI5fHx8ZW58MHx8fHx8&auto=format&fit=crop&q=60&w=600" alt="Mountain & Volcanic Hikes">
+                    <div class="category-overlay">
+                        <h3>Mountain & Volcanic Hikes</h3>
+                        <p>32 Tours</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://plus.unsplash.com/premium_photo-1687131786909-012d60e84943?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8VmlsbGFnZSUyMHZpc2l0cyUyQyUyMGxvY2FsJTIwbWFya2V0cyUyQyUyMGN1bHR1cmFsJTIwcGVyZm9ybWFuY2VzJTJDJTIwY29mZmVlJTJGdGVhJTIwcGxhbnRhdGlvbiUyMHRvdXJzJTIwaW4lMjB1Z2FuZGElMjBhbmQlMjByd2FuZGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Cultural & Community Tours">
+                    <div class="category-overlay">
+                        <h3>Cultural & Community Tours</h3>
+                        <p>15 Tours</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://media.istockphoto.com/id/1442433155/photo/landscape-of-modern-office-buildings-under-a-blue-cloudy-sky-in-kigali-rwanda.webp?a=1&b=1&s=612x612&w=0&k=20&c=2VR46Eg25hXBvGh54aAHUPRxExgtwGsQSxiFMUlVZUQ=" alt="Kigali City & Day Trips">
+                    <div class="category-overlay">
+                        <h3>Kigali City & Day Trips</h3>
+                        <p>12 Tours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Destinations -->
+    <section id="destinations">
+        <div class="section-header">
+            <p class="section-subtitle">TRENDING DESTINATIONS</p>
+            <h2 class="section-title">Top Destination</h2>
+        </div>
+        <div class="destinations-container">
+            <div class="destinations-showcase" id="destinationsGrid">
+                <div class="destination-large">
+                    <img src="https://media.istockphoto.com/id/1085112684/photo/rainforest-canopy-with-morning-mist-in-bwindi-impenetrable-national-park.webp?a=1&b=1&s=612x612&w=0&k=20&c=cJj9e37PoG27CpkpQe0QFKlHC-WIhUvYddIyQ7GUqaI=" alt="Volcanoes">
+                    <div class="destination-info">
+                        <h3>Bwindi Impenetrable National Park</h3>
+                        <p>Lush, misty forest; Gorillas; focus on "impenetrable" nature.</p>
+                        <div class="destination-meta">
+                            <span class="meta-item">📍 5 Locations</span>
+                            <span class="meta-item">⭐ 4.9</span>
+                            <span class="meta-item">💰 From $1,200</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="destination-large">
+                    <img src="https://media.istockphoto.com/id/1397175631/photo/view-from-singita-kwitonda-lodge-in-the-volcanoes-national-park-rwanda.webp?a=1&b=1&s=612x612&w=0&k=20&c=quEPXZ6VrHn0uUH_BjzuSPXsh1AglU6grB4lN9wxwB4=" alt="Volcanoes National Park">
+                    <div class="destination-info">
+                        <h3>Volcanoes National Park</h3>
+                        <p>Dramatic volcanic peaks; Gorillas and Golden Monkeys; clear views.</p>
+                        <div class="destination-meta">
+                            <span class="meta-item">📍 8 Locations</span>
+                            <span class="meta-item">⭐ 4.8</span>
+                            <span class="meta-item">💰 From $800</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="destination-large">
+                    <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Queen Elizabeth">
+                    <div class="destination-info">
+                        <h3>Queen Elizabeth Park</h3>
+                        <p>Uganda's most visited park with tree-climbing lions and boat safaris</p>
+                        <div class="destination-meta">
+                            <span class="meta-item">📍 7 Locations</span>
+                            <span class="meta-item">⭐ 4.5</span>
+                            <span class="meta-item">💰 From $670</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="destination-large">
+                    <img src="https://plus.unsplash.com/premium_photo-1661844600175-f1a53a43594d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fERlbnNlJTIwcmFpbmZvcmVzdCUzQiUyMENoaW1wYW56ZWUlMjB0cmFja2luZyUzQiUyMGxhcmdlJTIwcHJpbWF0ZSUyMHBvcHVsYXRpb24ufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Kibale Forest National Park">
+                    <div class="destination-info">
+                        <h3>Kibale Forest National Park</h3>
+                        <p>Dense rainforest; Chimpanzee tracking; large primate population.</p>
+                        <div class="destination-meta">
+                            <span class="meta-item">📍 9 Locations</span>
+                            <span class="meta-item">⭐ 4.9</span>
+                            <span class="meta-item">💰 From $760</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Travel With Us -->
+    <section class="plan-section" id="about">
+        <div class="plan-content">
+            <div class="plan-images">
+                <div class="plan-img">
+                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80" alt="Gorilla">
+                </div>
+                <div class="plan-img">
+                    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=80" alt="Chimpanzee">
+                </div>
+                <div class="plan-img">
+                    <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=400&q=80" alt="Culture">
+                </div>
+                <div class="plan-img">
+                    <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=400&q=80" alt="Safari">
+                </div>
+            </div>
+            <div class="plan-text">
+                <p class="section-subtitle">LET US GUIDE YOU</p>
+                <h2>Plan Your Trip<br>With Us</h2>
+                <p>We create authentic safari experiences with expert local guides, transparent pricing, and a commitment to responsible tourism. Every journey supports conservation and local communities.</p>
+                <div class="plan-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <strong>Expert Local Guides</strong><br>
+                            <span style="color: #666; font-size: 0.9rem;">Knowledgeable professionals with deep wildlife expertise</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <strong>Best Value Safaris</strong><br>
+                            <span style="color: #666; font-size: 0.9rem;">Transparent pricing with no hidden costs</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <strong>Responsible Travel</strong><br>
+                            <span style="color: #666; font-size: 0.9rem;">Conservation-focused with community empowerment</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="quote.html" class="btn-primary">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Most Popular Safaris -->
+    <section id="safaris">
+        <div class="section-header">
+            <p class="section-subtitle">BEST SELLING SAFARIS</p>
+            <h2 class="section-title">Most Popular Safari</h2>
+        </div>
+        <div class="tours-grid">
+            <div class="tour-card">
+                <div class="tour-image">
+                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80" alt="Gorilla Trek">
+                    <span class="tour-badge">Featured</span>
+                </div>
+                <div class="tour-details">
+                    <h3 class="tour-title">3-Day Gorilla Trekking Rwanda</h3>
+                    <p class="tour-location">📍 Volcanoes National Park</p>
+                    <div class="tour-footer">
+                        <div class="tour-price">$1,299</div>
+                        <div class="tour-rating">
+                            ⭐ 4.9 <span style="color: #999;">(156)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-image">
+                    <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=400&q=80" alt="Bwindi">
+                    <span class="tour-badge">Hot Deal</span>
+                </div>
+                <div class="tour-details">
+                    <h3 class="tour-title">4-Day Bwindi Gorilla Experience</h3>
+                    <p class="tour-location">📍 Bwindi, Uganda</p>
+                    <div class="tour-footer">
+                        <div class="tour-price">$1,199</div>
+                        <div class="tour-rating">
+                            ⭐ 5.0 <span style="color: #999;">(203)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-image">
+                    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=80" alt="Chimp">
+                </div>
+                <div class="tour-details">
+                    <h3 class="tour-title">Chimpanzee Tracking Safari</h3>
+                    <p class="tour-location">📍 Kibale Forest, Uganda</p>
+                    <div class="tour-footer">
+                        <div class="tour-price">$899</div>
+                        <div class="tour-rating">
+                            ⭐ 4.8 <span style="color: #999;">(142)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-image">
+                    <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=80" alt="Wildlife">
+                    <span class="tour-badge">New</span>
+                </div>
+                <div class="tour-details">
+                    <h3 class="tour-title">7-Day Wildlife & Primates</h3>
+                    <p class="tour-location">📍 Uganda Multi-Park</p>
+                    <div class="tour-footer">
+                        <div class="tour-price">$1,899</div>
+                        <div class="tour-rating">
+                            ⭐ 4.9 <span style="color: #999;">(98)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <div class="section-header">
+            <p class="section-subtitle">BEAUTIFUL MOMENTS</p>
+            <h2 class="section-title">Recent Gallery</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80" alt="Gorilla">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Volcano">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=80" alt="Chimp">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?w=400&q=80" alt="Wildlife">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=400&q=80" alt="Culture">
+            </div>
+             <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1734711423850-26d480b1d12b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dWdhbmRhbiUyMGN1bHR1cmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Culture">
+            </div>
+             <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1568184198461-ce97999ed2d9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z29yaWxsYSUyMHRyZWtraW5nfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Grey Monkey">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1558599644-8f501c206ae1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z29yaWxsYXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Forest">
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">97%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">19K</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8K</div>
+                <div class="stat-label">Total Guides</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Guides -->
+    <section>
+        <div class="section-header">
+            <p class="section-subtitle">MEET OUR TEAM</p>
+            <h2 class="section-title">Tour Guide</h2>
+        </div>
+        <div class="guides-grid">
+            <div class="guide-card">
+                <div class="guide-avatar">👨</div>
+                <h3 class="guide-name">Emmanuel Muragijimana</h3>
+                <p class="guide-title">Senior Gorilla Guide</p>
+                <div class="guide-rating">⭐⭐⭐⭐⭐</div>
+                <p style="color: #666; font-size: 0.9rem;">15+ years experience</p>
+            </div>
+            <div class="guide-card">
+                <div class="guide-avatar">👨</div>
+                <h3 class="guide-name">Patrick Tumwebaze</h3>
+                <p class="guide-title">Wildlife Specialist</p>
+                <div class="guide-rating">⭐⭐⭐⭐⭐</div>
+                <p style="color: #666; font-size: 0.9rem;">12+ years experience</p>
+            </div>
+            <div class="guide-card">
+                <div class="guide-avatar">👨</div>
+                <h3 class="guide-name">Eric Nshimiyimana</h3>
+                <p class="guide-title">Primate Expert</p>
+                <div class="guide-rating">⭐⭐⭐⭐⭐</div>
+                <p style="color: #666; font-size: 0.9rem;">10+ years experience</p>
+            </div>
+            <div class="guide-card">
+                <div class="guide-avatar">👩</div>
+                <h3 class="guide-name">Grace Nakato</h3>
+                <p class="guide-title">Cultural Guide</p>
+                <div class="guide-rating">⭐⭐⭐⭐⭐</div>
+                <p style="color: #666; font-size: 0.9rem;">8+ years experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <p class="section-subtitle">TESTIMONIALS</p>
+            <h2 class="section-title">What Client Say About Us</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">JM</div>
+                    <div class="testimonial-info">
+                        <h4>James Mitchell</h4>
+                        <p>United Kingdom</p>
+                    </div>
+                </div>
+                <p class="testimonial-text">"An absolutely life-changing experience! The gorilla trek was expertly organized, our guide was knowledgeable and punctual. Everything was transparent and professional."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">SL</div>
+                    <div class="testimonial-info">
+                        <h4>Sarah Lopez</h4>
+                        <p>United States</p>
+                    </div>
+                </div>
+                <p class="testimonial-text">"Best safari company in Rwanda! They handled permits, accommodation, everything seamlessly. The value for money is excellent and their commitment to responsible tourism is genuine."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">MK</div>
+                    <div class="testimonial-info">
+                        <h4>Michael Kawasaki</h4>
+                        <p>Japan</p>
+                    </div>
+                </div>
+                <p class="testimonial-text">"Exceptional service from start to finish. The guides truly care about wildlife conservation and making sure you have an authentic experience. This is not just a trip!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section" id="contact">
+        <div class="section-header">
+            <p class="section-subtitle">STAY UPDATED</p>
+            <h2 class="section-title">Get Updated The Latest<br>Newsletter</h2>
+        </div>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address">
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+    </section>
+
+    <section class="map-section">
+    <div class="container">
+       <p class="section-subtitle">GET TO US EASILY</p>
+       <h2 class="section-title">Find Us in Kigali</h2>
+    </div>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15949.630044102985!2d30.05943625!3d-1.94406145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19dca45a4b7f872f%3A0x868b209d6c702b8!2sKigali!5e0!3m2!1sen!2srw!4v1668547200000!5m2!1sen!2srw"
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Seek Wild Africa</h3>
+                <p>Your trusted partner for authentic, responsible safaris in Rwanda & Uganda. We create meaningful connections with nature, wildlife, and local communities.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#safaris">Safaris</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Safaris</h3>
+                <ul>
+                    <li><a href="#">Gorilla Trekking</a></li>
+                    <li><a href="#">Chimpanzee Tracking</a></li>
+                    <li><a href="#">Wildlife Safaris</a></li>
+                    <li><a href="#">Cultural Tours</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 10px;">📧 info@seekwildafrica.com</li>
+                    <li style="margin-bottom: 10px;">📞 +250 788 123 456</li>
+                    <li style="margin-bottom: 10px;">💬 WhatsApp Available</li>
+                    <li>📍 Kigali, Rwanda</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seek Wild Africa. All rights reserved. Designed with ❤️ for wildlife lovers</p>
+        </div>
+    </footer>
+    <script>
+        // WhatsApp redirect
+        document.getElementById('whatsappCTA').addEventListener('click', function(e) {
+            e.preventDefault();
+            const whatsappNumber = '250785241608'; // REPLACE WITH YOUR NUMBER
+            const message = encodeURIComponent('Hi! I need help planning my safari trip. Can you assist me?');
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        });
+    </script>

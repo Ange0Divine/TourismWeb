@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seek Wild Africa Classics Gallery</title>
+    <!-- Load Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Define the Custom Colors from the brief */
+        :root {
+            --forest-green: #1F5E3B;
+            --sunset-orange: #E27A27;
+            --safari-sand: #F4E9DA;
+            --charcoal: #2B2B2B;
+        }
+
+        /* Basic Setup and Font Imports */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--safari-sand);
+            color: var(--charcoal);
+            overflow-x: hidden; /* Prevent horizontal scrollbar on body */
+        }
+
+        /* Gallery Section Styles */
+        .gallery-container {
+            /* Full width container to hold the content and controls */
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 0;
+            position: relative;
+        }
+
+        .scroll-wrapper {
+            /* Crucial for enabling horizontal scrolling and hiding the scrollbar */
+            display: flex;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+            padding-bottom: 20px; /* Space for shadow/scroll visibility */
+            -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on touch devices */
+
+            /* Hide Scrollbar */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .scroll-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        /* Individual Card Styling */
+        .gallery-card {
+            position: relative;
+            min-width: 450px; /* Fixed width for card to control horizontal flow */
+            height: 480px;
+            margin-right: -100px; /* OVERLAP: Pulls the next card over this one */
+            flex-shrink: 0;
+            perspective: 1000px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth transition for scale/shadow */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .gallery-card {
+                min-width: 320px;
+                height: 400px;
+                margin-right: -50px; /* Less overlap on mobile */
+            }
+        }
+        
+        /* Hover Effect for the entire card group */
+        .gallery-card:hover {
+            z-index: 10;
+            transform: translateY(-10px); /* Lift slightly */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-image-box {
+            /* Container for the image and text blocks */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            gap: 15px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s;
+        }
+
+        /* Define the custom grid layouts for the blocks based on card index */
+        .gallery-card:nth-child(even) .gallery-image-box {
+            /* Alternating grid layout: 2 wide rows, then 1 column for the main image */
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .gallery-card:nth-child(odd) .gallery-image-box {
+            /* Alternating grid layout: 1 column for the main image, then 2 narrow rows */
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .image-block {
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .image-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- Image Placement and Sizing --- */
+
+        /* Main Image (always the first child) */
+        .gallery-card:nth-child(odd) .image-block:first-child {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+        .gallery-card:nth-child(even) .image-block:first-child {
+            grid-column: 2 / 3;
+            grid-row: 1 / 3;
+        }
+
+        /* Text Block (always the second child) */
+        .text-block {
+            background-color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .text-block h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--forest-green);
+            margin-bottom: 5px;
+        }
+
+        .text-block p {
+            font-size: 0.8rem;
+            color: var(--sunset-orange);
+            font-weight: 600;
+        }
+        
+        /* --- Scroll Navigation Controls --- */
+        .scroll-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            max-width: 1400px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none; /* Allows clicks to pass through to the cards */
+        }
+
+        .scroll-btn {
+            background-color: var(--forest-green);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            pointer-events: all; /* Re-enable clicks on the button itself */
+            z-index: 20;
+        }
+
+        .scroll-btn:hover {
+            background-color: var(--sunset-orange);
+            transform: scale(1.1);
+        }
+
+        /* Utility for Text */
+        .text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center mb-10">
+            <h2 class="text-xl font-semibold text-orange-600 uppercase tracking-widest" style="color: var(--sunset-orange);">
+                Our Signature Journeys
+            </h2>
+            <h1 class="text-5xl font-extrabold mt-2" style="font-family: 'Cormorant Garamond', serif; color: var(--forest-green);">
+                Seek Wild Africa Classics
+            </h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                Discover the iconic experiences that define East Africa, from Gorilla Treks to the vast Savannah.
+            </p>
+        </div>
+
+        <div class="gallery-container">
+            <!-- Scroll Wrapper (where the magic happens) -->
+            <div id="scroll-wrapper" class="scroll-wrapper">
+                
+                <!-- Card 1: Odd Layout (Main image on left) -->
+                <div class="gallery-card" onclick="alert('Navigating to Gorilla Trekking Tour...')">
+                    <div class="gallery-image-box">
+                        <div class="image-block">
+                            <!-- Placeholder image: Gorilla Trekking -->
+                            <img src="https://placehold.co/400x480/1F5E3B/ffffff?text=Gorilla+Trekking" alt="Gorilla Trekking in Rwanda" loading="lazy">
+                        </div>
+                        <div class="text-block">
+                            <h3>The Silverback Encounter</h3>
+                            <p>Rwanda & Uganda</p>
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Mountain View -->
+                            <img src="https://placehold.co/200x200/5E8C6A/ffffff?text=Volcano+View" alt="Volcano View" loading="lazy">
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Tourist Photo -->
+                            <img src="https://placehold.co/200x200/A8A888/ffffff?text=Travelers" alt="Happy Travelers" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Even Layout (Main image on right) -->
+                <div class="gallery-card" onclick="alert('Navigating to Savannah Safari...')">
+                    <div class="gallery-image-box">
+                        <div class="image-block">
+                            <!-- Placeholder image: Jeep Safari -->
+                            <img src="https://placehold.co/200x200/E27A27/ffffff?text=Savannah+Jeep" alt="Savannah Jeep Safari" loading="lazy">
+                        </div>
+                        <div class="text-block">
+                            <h3>Serengeti & Big Five</h3>
+                            <p>Tanzania</p>
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Lion -->
+                            <img src="https://placehold.co/200x200/FFB347/2B2B2B?text=Lion+Close-up" alt="Lion Close-up" loading="lazy">
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Landscape -->
+                            <img src="https://placehold.co/400x480/CA6923/ffffff?text=Endless+Plains" alt="Endless Plains Landscape" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Odd Layout (Main image on left) -->
+                <div class="gallery-card" onclick="alert('Navigating to Chimpanzee Tracking Tour...')">
+                    <div class="gallery-image-box">
+                        <div class="image-block">
+                            <!-- Placeholder image: Chimpanzee Tracking -->
+                            <img src="https://placehold.co/400x480/1F5E3B/ffffff?text=Chimpanzee+Tracking" alt="Chimpanzee Tracking" loading="lazy">
+                        </div>
+                        <div class="text-block">
+                            <h3>Forest Primate Trails</h3>
+                            <p>Kibale, Uganda</p>
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Forest Canopy -->
+                            <img src="https://placehold.co/200x200/3A7D44/ffffff?text=Canopy+Walk" alt="Forest Canopy Walk" loading="lazy">
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Local Guide -->
+                            <img src="https://placehold.co/200x200/779977/ffffff?text=Local+Guide" alt="Local Tour Guide" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Even Layout (Main image on right) -->
+                <div class="gallery-card" onclick="alert('Navigating to Hot Air Balloon Safari...')">
+                    <div class="gallery-image-box">
+                        <div class="image-block">
+                            <!-- Placeholder image: Balloon Launch -->
+                            <img src="https://placehold.co/200x200/E27A27/ffffff?text=Balloon+Launch" alt="Hot Air Balloon Launch" loading="lazy">
+                        </div>
+                        <div class="text-block">
+                            <h3>Balloon Sunrise Views</h3>
+                            <p>Masai Mara, Kenya</p>
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Zebras -->
+                            <img src="https://placehold.co/200x200/A0522D/ffffff?text=Herd+of+Zebra" alt="Herd of Zebras" loading="lazy">
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Balloon in Sky -->
+                            <img src="https://placehold.co/400x480/CA6923/ffffff?text=Balloon+in+Sky" alt="Hot Air Balloon in Sky" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 5: Odd Layout (Main image on left) -->
+                <div class="gallery-card" onclick="alert('Navigating to Volcano Hiking Tour...')">
+                    <div class="gallery-image-box">
+                        <div class="image-block">
+                            <!-- Placeholder image: Volcano Hiking -->
+                            <img src="https://placehold.co/400x480/1F5E3B/ffffff?text=Volcano+Hiking" alt="Volcano Hiking" loading="lazy">
+                        </div>
+                        <div class="text-block">
+                            <h3>Virunga Peaks Challenge</h3>
+                            <p>Rwanda, Congo & Uganda</p>
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Snowy Peak -->
+                            <img src="https://placehold.co/200x200/5E8C6A/ffffff?text=Snowy+Peak" alt="Snowy Peak" loading="lazy">
+                        </div>
+                        <div class="image-block">
+                            <!-- Placeholder image: Hiker Silhouette -->
+                            <img src="https://placehold.co/200x200/A8A888/ffffff?text=Hiker+Silhouette" alt="Hiker Silhouette" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Scroll Controls -->
+            <div class="scroll-controls">
+                <button id="scroll-left" class="scroll-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button id="scroll-right" class="scroll-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollWrapper = document.getElementById('scroll-wrapper');
+            const scrollLeftBtn = document.getElementById('scroll-left');
+            const scrollRightBtn = document.getElementById('scroll-right');
+            const scrollStep = 450; // Controls how far the wrapper scrolls
+
+            /**
+             * Scrolls the gallery wrapper left by one step.
+             */
+            scrollLeftBtn.addEventListener('click', () => {
+                // Determine current scroll position and scroll back
+                scrollWrapper.scrollLeft -= scrollStep;
+            });
+
+            /**
+             * Scrolls the gallery wrapper right by one step.
+             */
+            scrollRightBtn.addEventListener('click', () => {
+                // Determine current scroll position and scroll forward
+                scrollWrapper.scrollLeft += scrollStep;
+            });
+
+            /**
+             * Adds a subtle depth effect based on the card's position relative to the center of the viewport.
+             */
+            function updateCardTransforms() {
+                const cards = scrollWrapper.querySelectorAll('.gallery-card');
+                const wrapperRect = scrollWrapper.getBoundingClientRect();
+                const centerOffset = wrapperRect.width / 2;
+
+                cards.forEach(card => {
+                    const cardRect = card.getBoundingClientRect();
+                    
+                    // Calculate the center position of the card relative to the wrapper's center
+                    const cardCenter = cardRect.left - wrapperRect.left + cardRect.width / 2;
+                    const delta = cardCenter - centerOffset; // Negative is left of center, Positive is right
+                    
+                    // Normalize delta to a scale factor between 0.8 and 1.0 (closer to center is 1.0)
+                    // The '300' value controls the distance/falloff
+                    const scaleFactor = 1 - Math.min(1, Math.abs(delta) / 450) * 0.2; 
+                    
+                    // Calculate a subtle 3D rotation based on the position
+                    const rotateY = Math.min(15, Math.max(-15, delta / 25)); // Max 15 degree rotation
+
+                    // Apply the transformations
+                    card.style.transform = `translateX(${delta < 0 ? 0 : 0}px) scale(${scaleFactor}) rotateY(${rotateY}deg)`;
+                    card.style.opacity = Math.max(0.7, scaleFactor);
+                    card.style.zIndex = scaleFactor > 0.95 ? 10 : 1;
+                });
+            }
+
+            // Update transforms on load and whenever the wrapper scrolls
+            scrollWrapper.addEventListener('scroll', updateCardTransforms);
+
+            // Initial call to set the correct state on load
+            setTimeout(updateCardTransforms, 100); 
+        });
+    </script>
+</body>
+</html>

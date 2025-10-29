@@ -15,7 +15,7 @@
     <div class="logo">🦍 Seek Wild Africa</div>
     <ul class="nav-links">
         <li><a href="#home">Home</a></li>
-        <li><a href="plan.html">Plan Your Trip</a></li>
+        <li><a href="#Plan Your Trip">Plan Your Trip</a></li>
         <li><a href="#safaris">Safaris</a></li>
         <li><a href="#destinations">Destinations</a></li>
         <li><a href="#about">About</a></li>
@@ -223,7 +223,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="quote.html" class="btn-primary">Get a Quote</a>
+               
             </div>
         </div>
     </section>
@@ -300,6 +300,142 @@
             </div>
         </div>
     </section>
+      <section id="Plan Your Trip">
+        <div class="section-header">
+            <p class="section-subtitle">PLAN YOUR SAFARIS ADVENTURE</p>
+            <h2 class="section-title">Everything you need to know before traveling to Rwanda and Uganda for the experience of a lifetime.</h2>
+        </div>
+            
+        </section>
+
+        <div class="resource-grid">
+            <!-- Visa & Entry -->
+            <div class="resource-card">
+                <div class="resource-icon">🛂</div>
+                <h3>Visa & Entry Requirements</h3>
+                <p>Learn about visa options and entry requirements for Rwanda and Uganda.</p>
+                <ul class="resource-list">
+                    <li>East African Tourist Visa</li>
+                    <li>Visa on Arrival options</li>
+                    <li>Passport validity requirements</li>
+                    <li>COVID-19 travel protocols</li>
+                </ul>
+            </div>
+
+            <!-- Packing Guide -->
+            <div class="resource-card">
+                <div class="resource-icon">🎒</div>
+                <h3>Packing Checklist</h3>
+                <p>Essential items for gorilla trekking and wildlife safaris.</p>
+                <ul class="resource-list">
+                    <li>Waterproof hiking boots</li>
+                    <li>Long-sleeved clothing</li>
+                    <li>Rain jacket & gear</li>
+                    <li>Binoculars & camera</li>
+                </ul>
+            </div>
+
+            <!-- Health & Safety -->
+            <div class="resource-card">
+                <div class="resource-icon">🏥</div>
+                <h3>Health & Safety</h3>
+                <p>Stay healthy and safe during your African adventure.</p>
+                <ul class="resource-list">
+                    <li>Required vaccinations</li>
+                    <li>Malaria prevention</li>
+                    <li>Travel insurance tips</li>
+                    <li>Emergency contacts</li>
+                </ul>
+            </div>
+
+            <!-- Best Time to Visit -->
+            <div class="resource-card">
+                <div class="resource-icon">🌤️</div>
+                <h3>Best Time to Visit</h3>
+                <p>Plan your trip during ideal weather conditions.</p>
+                <ul class="resource-list">
+                    <li>Dry season (June-September)</li>
+                    <li>Short dry season (Dec-Feb)</li>
+                    <li>Gorilla permit availability</li>
+                    <li>Weather considerations</li>
+                </ul>
+            </div>
+
+            <!-- Gorilla Permits -->
+            <div class="resource-card">
+                <div class="resource-icon">🦍</div>
+                <h3>Gorilla Permits</h3>
+                <p>Understanding gorilla trekking permits and booking.</p>
+                <ul class="resource-list">
+                    <li>Rwanda: $1,500 per permit</li>
+                    <li>Uganda: $700 per permit</li>
+                    <li>Book 6-12 months ahead</li>
+                    <li>Age restrictions (15+)</li>
+                </ul>
+            </div>
+
+            <!-- Money & Budget -->
+            <div class="resource-card">
+                <div class="resource-icon">💰</div>
+                <h3>Budget & Money Tips</h3>
+                <p>Financial planning for your safari adventure.</p>
+                <ul class="resource-list">
+                    <li>Currency exchange info</li>
+                    <li>ATM availability</li>
+                    <li>Tipping guidelines</li>
+                    <li>Budget ranges by category</li>
+                </ul>
+            </div>
+
+            <!-- Cultural Etiquette -->
+            <div class="resource-card">
+                <div class="resource-icon">🤝</div>
+                <h3>Cultural Etiquette</h3>
+                <p>Respect local customs and traditions.</p>
+                <ul class="resource-list">
+                    <li>Dress code guidelines</li>
+                    <li>Photography etiquette</li>
+                    <li>Local greetings</li>
+                    <li>Conservation practices</li>
+                </ul>
+            </div>
+
+            <!-- FAQs -->
+            <div class="resource-card">
+                <div class="resource-icon">❓</div>
+                <h3>Frequently Asked Questions</h3>
+                <p>Quick answers to common traveler questions.</p>
+                <ul class="resource-list">
+                    <li>Fitness level needed</li>
+                    <li>What to expect on treks</li>
+                    <li>Accommodation options</li>
+                    <li>Group vs private tours</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>Ready to Start Planning?</h2>
+            <p>Let our expert team create a personalized itinerary tailored to your interests, budget, and schedule.</p>
+            <div class="cta-buttons">
+                <a href="quote.html" class="cta-btn">Get a Free Quote</a>
+                <a href="#whatsapp" class="cta-btn secondary" id="whatsappCTA">Chat on WhatsApp</a>
+            </div>
+        </div>
+    </main>
+
+    
+
+    <script>
+        // WhatsApp redirect
+        document.getElementById('whatsappCTA').addEventListener('click', function(e) {
+            e.preventDefault();
+            const whatsappNumber = '250785241608'; // REPLACE WITH YOUR NUMBER
+            const message = encodeURIComponent('Hi! I need help planning my safari trip. Can you assist me?');
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        });
+    </script>
 
     <!-- Gallery -->
     <section id="gallery">
@@ -408,7 +544,6 @@
                     <div class="testimonial-info">
                         <h4>James Mitchell</h4>
                         <p>United Kingdom</p>
-                        <div class="guide-rating">⭐⭐⭐⭐⭐</div>
                     </div>
                 </div>
                 <p class="testimonial-text">"An absolutely life-changing experience! The gorilla trek was expertly organized, our guide was knowledgeable and punctual. Everything was transparent and professional."</p>
@@ -419,7 +554,6 @@
                     <div class="testimonial-info">
                         <h4>Sarah Lopez</h4>
                         <p>United States</p>
-                        <div class="guide-rating">⭐⭐⭐⭐⭐</div>
                     </div>
                 </div>
                 <p class="testimonial-text">"Best safari company in Rwanda! They handled permits, accommodation, everything seamlessly. The value for money is excellent and their commitment to responsible tourism is genuine."</p>
@@ -430,7 +564,6 @@
                     <div class="testimonial-info">
                         <h4>Michael Kawasaki</h4>
                         <p>Japan</p>
-                        <div class="guide-rating">⭐⭐⭐⭐⭐</div>
                     </div>
                 </div>
                 <p class="testimonial-text">"Exceptional service from start to finish. The guides truly care about wildlife conservation and making sure you have an authentic experience. This is not just a trip!"</p>

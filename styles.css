@@ -32,6 +32,106 @@ nav {
     z-index: 1000;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #1f5e3b;
+}
+
+/* Hide menu toggle on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 🔽 Responsive Styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    text-align: right;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 10px 0; /* reduces top/bottom padding */
+  }
+
+ .nav-links.active {
+    display: flex;
+  }
+  .nav-links li {
+  padding: 15px 20px;
+}
+ .nav-links li {
+    padding: 8px 15px; /* reduced from 15px 20px */
+  }
+
+  .nav-links li a {
+    display: block;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .nav-links li a:hover {
+    background-color: #f4f4f4;
+    color: #1f5e3b;
+  }
+
+  /* Keep desktop quote button hidden, mobile one visible */
+ 
+
+  .mobile-quote {
+    display: block;
+    text-align: center;
+    margin: 8px 15px;
+    padding: 8px 12px;
+    background-color: #1f5e3b;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .mobile-quote:hover {
+    background-color: #15522e;
+  }
+}
+
+  
 
 .logo {
     font-size: 1.8rem;
@@ -1686,6 +1786,189 @@ footer {
         top: 15px;
         right: 15px;
         font-size: 2rem;
+    }
+}
+.payment-modal-content {
+    max-width: 800px;
+    background: #F4E9DA;
+}
+
+.payment-modal-header {
+    text-align: center;
+    padding: 40px 40px 30px;
+    background: linear-gradient(135deg, #1F5E3B, #E27A27);
+    color: white;
+    border-radius: 25px 25px 0 0;
+}
+
+.payment-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.payment-modal-header h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.payment-modal-header p {
+    font-size: 1rem;
+    opacity: 0.95;
+}
+
+.payment-options-container {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.payment-option-card {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 3px solid #F4E9DA;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.payment-option-card:hover {
+    transform: translateY(-10px);
+    border-color: #1F5E3B;
+    box-shadow: 0 15px 40px rgba(31, 94, 59, 0.2);
+}
+
+.payment-option-icon {
+    margin-bottom: 20px;
+}
+
+.payment-option-card h3 {
+    font-size: 1.5rem;
+    color: #1F5E3B;
+    margin-bottom: 10px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.payment-option-card p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.payment-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.payment-features li {
+    padding: 8px 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.payment-select-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #1F5E3B, #E27A27);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.payment-select-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(31, 94, 59, 0.4);
+}
+
+.payment-select-btn .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.payment-select-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+.payment-modal-footer {
+    text-align: center;
+    padding: 20px 40px 40px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.payment-modal-footer p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Animation for payment options */
+.payment-option-card {
+    animation: fadeInScale 0.5s ease forwards;
+    opacity: 0;
+}
+
+.payment-option-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.payment-option-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive for payment modal */
+@media (max-width: 768px) {
+    .payment-options-container {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
+
+    .payment-modal-header {
+        padding: 30px 20px 20px;
+    }
+
+    .payment-modal-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .payment-option-card {
+        padding: 25px;
     }
 }
 

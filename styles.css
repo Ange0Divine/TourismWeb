@@ -59,6 +59,10 @@ nav {
 .nav-links li a:hover {
   color: #1f5e3b;
 }
+@media (max-width: 768px) {
+  .nav-btn:not(.mobile-quote) {
+    display: none;
+  }}
 
 /* Hide menu toggle on desktop */
 .menu-toggle {

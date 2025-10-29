@@ -1365,6 +1365,329 @@ footer {
         transform: translateY(0);
     }
 }
+/* Add this CSS to your styles.css file */
+
+/* Modal Overlay */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.show {
+    display: block;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #F4E9DA;
+    margin: 2% auto;
+    padding: 0;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.4s ease;
+    max-height: 95vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Modal Header */
+.modal-header {
+    text-align: center;
+    padding: 40px 40px 20px;
+    background: linear-gradient(135deg, #1F5E3B, #E27A27);
+    color: white;
+    border-radius: 25px 25px 0 0;
+}
+
+.modal-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.modal-header p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+/* Close Button */
+.modal-close {
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    transition: all 0.3s;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Form Container inside Modal */
+.modal .quote-form-container {
+    max-width: 100%;
+    margin: 0;
+    background: #F4E9DA;
+    padding: 40px;
+    border-radius: 0 0 25px 25px;
+    box-shadow: none;
+    border: none;
+}
+
+/* Form Styling */
+.form-step {
+    margin-bottom: 35px;
+}
+
+.form-step h3 {
+    color: #1F5E3B;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-number {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #1F5E3B, #E27A27);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #2B2B2B;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.required {
+    color: #E27A27;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1F5E3B;
+    box-shadow: 0 0 0 3px rgba(31, 94, 59, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.checkbox-item:hover {
+    border-color: #1F5E3B;
+    background: #f9f9f9;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #1F5E3B;
+}
+
+.checkbox-item label {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.budget-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.budget-option {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+}
+
+.budget-option:hover,
+.budget-option.selected {
+    border-color: #1F5E3B;
+    background: rgba(31, 94, 59, 0.05);
+}
+
+.budget-option input[type="radio"] {
+    display: none;
+}
+
+.submit-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #e0e0e0;
+    text-align: center;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #1F5E3B, #E27A27);
+    color: white;
+    border: none;
+    padding: 18px 60px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(31, 94, 59, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(31, 94, 59, 0.5);
+}
+
+.form-note {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+
+    .modal .quote-form-container {
+        padding: 30px 20px;
+    }
+
+    .modal-header {
+        padding: 30px 20px 20px;
+    }
+
+    .modal-header h1 {
+        font-size: 2rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .checkbox-group {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+    }
+}
 
 /* Ensure the title animation is observed and played */
 .map-section .section-title[style*="animation-play-state: running"] {

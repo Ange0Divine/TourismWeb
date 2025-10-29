@@ -481,8 +481,8 @@ section {
 
 .category-card {
     position: relative;
-    min-width: 280px;
-    height: 350px;
+    min-width: 240px;
+    height: 310px;
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;

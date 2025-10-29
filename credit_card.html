@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Payment - Seek Wild Africa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <style>
+        /* General Nav styles (copied from user's provided HTML for completeness) */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1F5E3B; /* Forest Green */
+            display: flex;
+            align-items: center;
+        }
+        .nav-btn {
+            background-color: #E27A27;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .nav-btn:hover {
+            background-color: #a35a1d;
+        }
+        
+        /* PAYMENT PAGE STYLES */
+        .payment-page {
+            min-height: 100vh; /* Reduced from 150vh to 100vh */
+            background: linear-gradient(135deg, #F4E9DA 0%, #e8dcc8 100%);
+            padding-top: 120px;
+            padding-bottom: 60px;
+        }
+        
+        .payment-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 3px solid #1F5E3B;
+        }
+        
+        .payment-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .payment-logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .payment-header h1 {
+            color: #1F5E3B;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .card-brands {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 2rem;
+        }
+        
+        .payment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+        }
+        
+        .form-field label {
+            font-weight: 600;
+            color: #2B2B2B;
+        }
+        
+        .form-field input {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-field input:focus {
+            outline: none;
+            border-color: #1F5E3B;
+            box-shadow: 0 0 0 3px rgba(31, 94, 59, 0.1);
+        }
+        
+        /* --- STYLES MODIFIED FOR USER REQUEST --- */
+        .payment-btn {
+            background: linear-gradient(135deg, #1F5E3B, #E27A27);
+            color: white;
+            border: none;
+            padding: 20px; /* Slightly increased padding for 'large' feel */
+            border-radius: 50px;
+            font-size: 1.2rem; /* Increased font size for 'large' feel */
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 25px; /* Increased margin */
+            transition: all 0.3s;
+            width: 100%; /* Ensures it is full width (large) */
+        }
+        /* --- END STYLES MODIFIED --- */
+        
+        .payment-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(31, 94, 59, 0.4);
+        }
+        
+        .payment-info {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .back-link {
+            text-align: center; /* Ensures the link is centered */
+            margin-top: 20px;
+        }
+        
+        .back-link a {
+            color: #1F5E3B;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">🦍 Seek Wild Africa</div>
+       
+    </nav>
+    
+    <div class="payment-page">
+        <div class="payment-container">
+            <div class="payment-header">
+                <div class="payment-logo">
+    <img src="data:image/jpeg;base64,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" alt="Credit Card Logo" id="credit_card Logo">
+</div>
+                <h1>Credit/Debit Card Payment</h1>
+                <p>Enter your card details to complete payment</p>
+                <div class="card-brands">
+                    <span>💳</span>
+                    <span>🏦</span>
+                    <span>💰</span>
+                </div>
+            </div>
+            
+            <form class="payment-form" id="cardForm">
+                <h2 style="color: #E27A27; border-bottom: 2px solid #F4E9DA; padding-bottom: 5px; margin-top: 0; margin-bottom: 10px; font-family: 'Cormorant Garamond', serif;">Trip & Contact Info</h2>
+                
+                <div class="form-field">
+                    <label>Trip/Safari Name *</label>
+                    <input type="text" id="tripName" name="tripName" placeholder="e.g., 5-Day Gorilla Trekking Safari" required>
+                </div>
+                
+                <div class="form-group">
+                <label for="departureDate">Departure Date</label>
+                <input type="date" id="departureDate" name="departureDate" required>
+            </div>
+
+                
+                <div class="form-group">
+                <label for="travelers">Number of Travelers</label>
+                <input type="number" id="travelers" name="travelers" min="1" value="1" required>
+            </div>
+                
+                <h2 style="color: #E27A27; border-bottom: 2px solid #F4E9DA; padding-bottom: 5px; margin-top: 25px; margin-bottom: 10px; font-family: 'Cormorant Garamond', serif;">Payment Details</h2>
+                
+                <div class="form-field">
+                    <label>Card Number *</label>
+                    <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Expiry Date *</label>
+                        <input type="text" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-field">
+                        <label>CVV *</label>
+                        <input type="text" placeholder="123" maxlength="4" required>
+                    </div>
+                </div>
+                
+                <div class="form-field">
+                    <label>Amount (USD) *</label>
+                    <input type="number" placeholder="1299.00" required min="1">
+                </div>
+                
+                <div class="payment-info">
+                    <p>🔒 Your payment information is encrypted and secure</p>
+                    <div class="security-badge">
+                        <span>🛡️</span>
+                        <span>Secured by SSL encryption | PCI DSS Compliant</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="payment-btn">Pay Now</button>
+            </form>
+            
+            <div class="back-link">
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Format card number input
+        document.querySelector('input[placeholder="1234 5678 9012 3456"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+        
+        // Format expiry date
+        document.querySelector('input[placeholder="MM/YY"]').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                e.target.value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            } else {
+                e.target.value = value;
+            }
+        });
+        
+        // CVV numbers only
+        document.querySelector('input[placeholder="123"]').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+        
+        document.getElementById('cardForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show the pop-up indicating booking completion
+            alert('Booking Completed! \n\nYour payment has been successfully processed. We will contact you shortly to finalize the details.');
+            
+            // Optionally clear the form after the alert
+            this.reset();
+        });
+    </script>
+</body>
+</html>

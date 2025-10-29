@@ -11,19 +11,22 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-    <div class="logo">🦍 Seek Wild Africa</div>
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#Plan Your Trip">Plan Your Trip</a></li>
-        <li><a href="#safaris">Safaris</a></li>
-        <li><a href="#destinations">Destinations</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="quote.html" class="nav-btn">Get a Quote</a>
-</nav>
+     <nav>
+  <div class="logo">🦍 Seek Wild Africa</div>
 
+  <div class="menu-toggle" id="menu-toggle">☰</div>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#Plan Your Trip">Plan Your Trip</a></li>
+    <li><a href="#safaris">Safaris</a></li>
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+    <a href="quote.html" class="nav-btn">Get a Quote</a>
+  
+</nav>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <video id="bg-video" autoplay muted loop playsinline>
@@ -80,7 +83,7 @@
         </div>
         <div class="categories-container">
             <div class="categories-grid" id="categoriesGrid">
-                <a href="primates.html" class="category-card">
+                <a href="classics.html" class="category-card">
                     <img src="https://images.unsplash.com/photo-1736611248963-f889f98f963a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fEdvcmlsbGElMjBUcmVra2luZyUyMChSd2FuZGElMkZVZ2FuZGEpJTJDJTIwQ2hpbXBhbnplZSUyMFRyYWNraW5nJTJDJTIwR29sZGVuJTIwTW9ua2V5JTIwVHJhY2tpbmcufGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Primate Adventures">
                     <div class="category-overlay">
                         <h3>Primate Adventures</h3>
@@ -94,21 +97,21 @@
                         <p>18 Tours</p>
                     </div>
                 </a>
-                <a href="mountain-hikes.html" class="category-card center">
+                <a href="classics.html" class="category-card center">
                     <img src="https://plus.unsplash.com/premium_photo-1661908873366-e9ca6f3c7fa7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDI5fHx8ZW58MHx8fHx8&auto=format&fit=crop&q=60&w=600" alt="Mountain & Volcanic Hikes">
                     <div class="category-overlay">
                         <h3>Mountain & Volcanic Hikes</h3>
                         <p>32 Tours</p>
                     </div>
                 </a>
-                <a href="cultural-tours.html" class="category-card">
+                <a href="classics.html" class="category-card">
                     <img src="https://plus.unsplash.com/premium_photo-1687131786909-012d60e84943?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8VmlsbGFnZSUyMHZpc2l0cyUyQyUyMGxvY2FsJTIwbWFya2V0cyUyQyUyMGN1bHR1cmFsJTIwcGVyZm9ybWFuY2VzJTJDJTIwY29mZmVlJTJGdGVhJTIwcGxhbnRhdGlvbiUyMHRvdXJzJTIwaW4lMjB1Z2FuZGElMjBhbmQlMjByd2FuZGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Cultural & Community Tours">
                     <div class="category-overlay">
                         <h3>Cultural & Community Tours</h3>
                         <p>15 Tours</p>
                     </div>
                 </a>
-                <a href="kigali-tours.html" class="category-card">
+                <a href="classics.html" class="category-card">
                     <img src="https://media.istockphoto.com/id/1442433155/photo/landscape-of-modern-office-buildings-under-a-blue-cloudy-sky-in-kigali-rwanda.webp?a=1&b=1&s=612x612&w=0&k=20&c=2VR46Eg25hXBvGh54aAHUPRxExgtwGsQSxiFMUlVZUQ=" alt="Kigali City & Day Trips">
                     <div class="category-overlay">
                         <h3>Kigali City & Day Trips</h3>
@@ -810,6 +813,62 @@
         </div>
     </div>
 </div>
+<div id="paymentModal" class="modal payment-modal">
+    <div class="modal-content payment-modal-content">
+        <span class="modal-close" id="closePaymentModal">&times;</span>
+        
+        <div class="payment-modal-header">
+            <div class="payment-icon">💳</div>
+            <h2>Choose Your Payment Method</h2>
+            <p>Select your preferred payment option to complete your booking</p>
+        </div>
+
+        <div class="payment-options-container">
+            <div class="payment-option-card" id="momoPayOption">
+                <div class="payment-option-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="#E27A27"/>
+                        <path d="M12 6C8.69 6 6 8.69 6 12C6 15.31 8.69 18 12 18C15.31 18 18 15.31 18 12C18 8.69 15.31 6 12 6ZM12 16C9.79 16 8 14.21 8 12C8 9.79 9.79 8 12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16Z" fill="#1F5E3B"/>
+                    </svg>
+                </div>
+                <h3>MTN Mobile Money</h3>
+                <p>Pay securely using MTN Mobile Money</p>
+                <ul class="payment-features">
+                    <li>✓ Instant confirmation</li>
+                    <li>✓ Secure transaction</li>
+                    <li>✓ No extra fees</li>
+                </ul>
+                <a href="mtn.html" class="payment-select-btn" data-method="card">
+    Select Momo Pay
+    <span class="arrow">→</span>
+</a>
+            </div>
+
+            <div class="payment-option-card" id="creditCardOption">
+                <div class="payment-option-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM20 18H4V12H20V18ZM20 8H4V6H20V8Z" fill="#1F5E3B"/>
+                    </svg>
+                </div>
+                <h3>Credit/Debit Card</h3>
+                <p>Pay with Visa, Mastercard, or other cards</p>
+                <ul class="payment-features">
+                    <li>✓ International cards accepted</li>
+                    <li>✓ Secure SSL encryption</li>
+                    <li>✓ PCI compliant</li>
+                </ul>
+                <a href="credit_card.html" class="payment-select-btn" data-method="card">
+    Select Card Payment
+    <span class="arrow">→</span>
+</a>
+            </div>
+        </div>
+
+        <div class="payment-modal-footer">
+            <p>🔒 All transactions are secure and encrypted</p>
+        </div>
+    </div>
+</div>
     <script>
         // WhatsApp redirect
         document.getElementById('whatsappCTA').addEventListener('click', function(e) {
@@ -891,6 +950,86 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const paymentModal = document.getElementById('paymentModal');
+    const closePaymentModal = document.getElementById('closePaymentModal');
+    
+    // Get all "Book For Your Trip Now" buttons
+    const bookButtons = document.querySelectorAll('a[href="#whatsapp"]');
+    
+    // Find the specific "Book For Your Trip Now" button
+    bookButtons.forEach(button => {
+        if (button.textContent.trim().includes('Book For Your Trip Now')) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                paymentModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+    });
+    
+    // Close payment modal when clicking X button
+    if (closePaymentModal) {
+        closePaymentModal.addEventListener('click', function() {
+            paymentModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    // Close payment modal when clicking outside
+    window.addEventListener('click', function(e) {
+        if (e.target === paymentModal) {
+            paymentModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Close payment modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && paymentModal.classList.contains('show')) {
+            paymentModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Handle payment method selection
+    const paymentButtons = document.querySelectorAll('.payment-select-btn');
+    
+    paymentButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const paymentMethod = this.getAttribute('data-method');
+            
+            // Close the modal
+            paymentModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+            
+            // Redirect based on payment method
+            if (paymentMethod === 'momo') {
+                // Redirect to MTN Mobile Money payment page
+                window.location.href = 'momo-payment.html';
+            } else if (paymentMethod === 'card') {
+                // Redirect to Credit Card payment page
+                window.location.href = 'card-payment.html';
+            }
+        });
+    });
+    
+    // Add hover effect for payment option cards
+    const paymentCards = document.querySelectorAll('.payment-option-card');
+    
+    paymentCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const button = this.querySelector('.payment-select-btn');
+            if (button) {
+                button.click();
+            }
+        });
+    });
+});
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('active');
+  });
+
     </script>
 </body>
 </html>

@@ -599,11 +599,11 @@ section {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 30px;
+    padding: 25px;
     background: linear-gradient(to top, rgba(31, 94, 59, 0.95), transparent);
     color: white;
-    transform: translateY(70%);
-    transition: transform 0.4s;
+    transform: translateY(40%); /* changed from 70% to 40% */
+    transition: transform 0.4s ease;
 }
 
 .destination-large:hover .destination-info,

@@ -81,43 +81,113 @@ function updateDestinationCards() {
     });
 }
 
-const categoriesGrid = document.getElementById('categoriesGrid');
-const destinationsGrid = document.getElementById('destinationsGrid');
+// Initialize scroll effects and arrow functionality when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Get grid elements
+    const categoriesGrid = document.getElementById('categoriesGrid');
+    const destinationsGrid = document.getElementById('destinationsGrid');
+    const safariGrid = document.getElementById('safariGrid');
 
-if (categoriesGrid) {
-    categoriesGrid.addEventListener('scroll', updateCategoryCards);
-    // Initial update
-    updateCategoryCards();
-}
+    // Setup scroll effects for categories
+    if (categoriesGrid) {
+        categoriesGrid.addEventListener('scroll', updateCategoryCards);
+        updateCategoryCards();
+    }
 
-if (destinationsGrid) {
-    destinationsGrid.addEventListener('scroll', updateDestinationCards);
-    // Initial update
-    updateDestinationCards();
-}
+    // Setup scroll effects for destinations
+    if (destinationsGrid) {
+        destinationsGrid.addEventListener('scroll', updateDestinationCards);
+        updateDestinationCards();
+    }
 
-// Click to scroll to center
-document.querySelectorAll('.category-card').forEach((card, index) => {
-    card.addEventListener('click', function() {
-        const grid = document.getElementById('categoriesGrid');
-        if (!grid) return;
-        
-        const cardWidth = card.offsetWidth + 30; // width + gap
-        const scrollPosition = (index * cardWidth) - (grid.offsetWidth / 2) + (cardWidth / 2);
-        grid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+    // Click to scroll to center for category cards
+    document.querySelectorAll('.category-card').forEach((card, index) => {
+        card.addEventListener('click', function(e) {
+            if (!categoriesGrid) return;
+            const cardWidth = card.offsetWidth + 30;
+            const scrollPosition = (index * cardWidth) - (categoriesGrid.offsetWidth / 2) + (cardWidth / 2);
+            categoriesGrid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+        });
     });
+
+    // Click to scroll to center for destination cards
+    document.querySelectorAll('.destination-large').forEach((card, index) => {
+        card.addEventListener('click', function(e) {
+            if (!destinationsGrid) return;
+            const cardWidth = card.offsetWidth + 30;
+            const scrollPosition = (index * cardWidth) - (destinationsGrid.offsetWidth / 2) + (cardWidth / 2);
+            destinationsGrid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+        });
+    });
+
+    // Scroll Arrow Functionality for Categories
+    const categoriesScrollLeft = document.getElementById('categoriesScrollLeft');
+    const categoriesScrollRight = document.getElementById('categoriesScrollRight');
+
+    if (categoriesScrollLeft && categoriesGrid) {
+        categoriesScrollLeft.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Left arrow clicked - Categories');
+            categoriesGrid.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+    }
+
+    if (categoriesScrollRight && categoriesGrid) {
+        categoriesScrollRight.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Right arrow clicked - Categories');
+            categoriesGrid.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+    }
+
+    // Scroll Arrow Functionality for Destinations
+    const destinationsScrollLeft = document.getElementById('destinationsScrollLeft');
+    const destinationsScrollRight = document.getElementById('destinationsScrollRight');
+
+    if (destinationsScrollLeft && destinationsGrid) {
+        destinationsScrollLeft.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Left arrow clicked - Destinations');
+            destinationsGrid.scrollBy({ left: -400, behavior: 'smooth' });
+        });
+    }
+
+    if (destinationsScrollRight && destinationsGrid) {
+        destinationsScrollRight.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Right arrow clicked - Destinations');
+            destinationsGrid.scrollBy({ left: 400, behavior: 'smooth' });
+        });
+    }
+
+    // Scroll Arrow Functionality for Safari Tours
+    const safariScrollLeft = document.getElementById('safariScrollLeft');
+    const safariScrollRight = document.getElementById('safariScrollRight');
+
+    if (safariScrollLeft && safariGrid) {
+        safariScrollLeft.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Left arrow clicked - Safari');
+            safariGrid.scrollBy({ left: -320, behavior: 'smooth' });
+        });
+    }
+
+    if (safariScrollRight && safariGrid) {
+        safariScrollRight.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Right arrow clicked - Safari');
+            safariGrid.scrollBy({ left: 320, behavior: 'smooth' });
+        });
+    }
 });
 
-document.querySelectorAll('.destination-large').forEach((card, index) => {
-    card.addEventListener('click', function() {
-        const grid = document.getElementById('destinationsGrid');
-        if (!grid) return;
-        
-        const cardWidth = card.offsetWidth + 30;
-        const scrollPosition = (index * cardWidth) - (grid.offsetWidth / 2) + (cardWidth / 2);
-        grid.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-    });
-});
+
 
 // Scroll animations for other elements
 const observerOptions = {
@@ -149,7 +219,7 @@ if (newsletterForm) {
 document.addEventListener('DOMContentLoaded', function() {
     // Replace with your actual WhatsApp number (include country code without + or spaces)
     // Example: For +250 788 123 456, use: 250788123456
-    const whatsappNumber = '250788123456'; // REPLACE THIS WITH YOUR ACTUAL NUMBER
+    const whatsappNumber = '250788586735'; // REPLACE THIS WITH YOUR ACTUAL NUMBER
     
     // Find all WhatsApp buttons
     const whatsappButtons = document.querySelectorAll('a[href="#whatsapp"]');

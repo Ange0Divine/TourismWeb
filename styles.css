@@ -257,10 +257,8 @@ nav {
     padding: 20px;
 }
 
-.payment-section h2, .form-section h2 {
-    color: #E27A27;
-    margin-bottom: 20px;
-}
+
+
 
 #bg-video {
     position: absolute;
@@ -359,70 +357,6 @@ nav {
     transform: translateY(-3px);
 }
 
-/* Search Box */
-.search-box {
-    position: relative;
-    z-index: 10;
-    margin-top: -80px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 20px;
-}
-
-.search-container {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    border: 2px solid #1F5E3B;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    align-items: end;
-}
-
-.search-field {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.search-field label {
-    font-weight: 600;
-    color: #2B2B2B;
-    font-size: 0.9rem;
-}
-
-.search-field input, .search-field select {
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: border 0.3s;
-    font-family: 'Inter', sans-serif;
-}
-
-.search-field input:focus, .search-field select:focus {
-    outline: none;
-    border-color: #1F5E3B;
-}
-
-.search-btn {
-    background: #1F5E3B;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.search-btn:hover {
-    transform: translateY(-2px);
-    background: #164a2e;
-}
 
 /* Section Styling */
 section {
@@ -634,6 +568,98 @@ section {
     gap: 5px;
     font-size: 0.9rem;
 }
+/* Styling for the Read More button/link */
+.read-more-btn {
+    display: inline-block;
+    color: #1f5e3b; /* A dark green color */
+    font-weight: bold;
+    text-decoration: none; /* Remove underline */
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Initially hide the content */
+.hidden-content {
+    display: none;
+    opacity: 0;
+    /* Adding a transition for a smoother opening effect */
+    transition: opacity 0.5s ease; 
+}
+
+/* Class added by JavaScript to show the content */
+.hidden-content.show {
+    display: block;
+    opacity: 1;
+}
+
+
+
+/* Scroll Arrows for Horizontal Scrolling */
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(31, 94, 59, 0.9);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+}
+
+.scroll-arrow:hover {
+    background: rgba(31, 94, 59, 1);
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.scroll-arrow-left {
+    left: -25px;
+}
+
+.scroll-arrow-right {
+    right: -25px;
+}
+
+.scroll-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Adjust container overflow to show arrows outside */
+.categories-container,
+.destinations-container,
+.tours-container {
+    overflow: visible;
+    position: relative;
+}
+
+/* Hide arrows on small screens or adjust positioning */
+@media (max-width: 768px) {
+    .scroll-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+    }
+    
+    .scroll-arrow-left {
+        left: 5px;
+    }
+    
+    .scroll-arrow-right {
+        right: 5px;
+    }
+}
 
 /* Plan Your Trip */
 .plan-section {
@@ -717,12 +743,24 @@ section {
 }
 
 /* Popular Tours */
-.tours-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+.tours-container {
+    position: relative;
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tours-grid {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    scrollbar-width: none;
+}
+
+.tours-grid::-webkit-scrollbar {
+    display: none;
 }
 
 .tour-card {
@@ -734,6 +772,8 @@ section {
     animation: slideInUp 0.8s ease forwards;
     opacity: 0;
     border: 2px solid #F4E9DA;
+    min-width: 280px;
+    flex-shrink: 0;
 }
 
 .tour-card:nth-child(1) { animation-delay: 0.1s; }
@@ -834,6 +874,22 @@ section {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
+.gallery-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    padding: 0 5px;
+}
+.gallery-image {
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; /* space between image + text */
+}
+
 
 .gallery-item:hover {
     transform: scale(1.05);
@@ -1032,12 +1088,29 @@ section {
     transform: translateY(-2px);
     background: #164a2e;
 }
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.social-icons img {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.15);
+}
+
 
 /* Footer */
 footer {
     background: #2B2B2B;
     color: white;
-    padding: 60px 5% 20px;
+    padding: 40px 3% 20px;
 }
 
 .footer-content {
@@ -1394,55 +1467,7 @@ footer {
             transform: scale(1.05);
         }
 
-        .cta-section {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 50px;
-            background: linear-gradient(135deg, #1F5E3B, #E27A27);
-            border-radius: 25px;
-            text-align: center;
-            color: white;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.95;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            background: white;
-            color: #1F5E3B;
-            padding: 15px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta-btn.secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
-        }
+        
 
         @media (max-width: 768px) {
             .resource-grid {
@@ -1792,158 +1817,7 @@ footer {
         font-size: 2rem;
     }
 }
-.payment-modal-content {
-    max-width: 800px;
-    background: #F4E9DA;
-}
 
-.payment-modal-header {
-    text-align: center;
-    padding: 40px 40px 30px;
-    background: linear-gradient(135deg, #1F5E3B, #E27A27);
-    color: white;
-    border-radius: 25px 25px 0 0;
-}
-
-.payment-icon {
-    font-size: 4rem;
-    margin-bottom: 15px;
-    animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.payment-modal-header h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.payment-modal-header p {
-    font-size: 1rem;
-    opacity: 0.95;
-}
-
-.payment-options-container {
-    padding: 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.payment-option-card {
-    background: white;
-    padding: 35px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 3px solid #F4E9DA;
-    transition: all 0.3s;
-    cursor: pointer;
-}
-
-.payment-option-card:hover {
-    transform: translateY(-10px);
-    border-color: #1F5E3B;
-    box-shadow: 0 15px 40px rgba(31, 94, 59, 0.2);
-}
-
-.payment-option-icon {
-    margin-bottom: 20px;
-}
-
-.payment-option-card h3 {
-    font-size: 1.5rem;
-    color: #1F5E3B;
-    margin-bottom: 10px;
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.payment-option-card p {
-    color: #666;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-}
-
-.payment-features {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    text-align: left;
-}
-
-.payment-features li {
-    padding: 8px 0;
-    color: #555;
-    font-size: 0.9rem;
-}
-
-.payment-select-btn {
-    width: 100%;
-    background: linear-gradient(135deg, #1F5E3B, #E27A27);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.payment-select-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(31, 94, 59, 0.4);
-}
-
-.payment-select-btn .arrow {
-    font-size: 1.2rem;
-    transition: transform 0.3s;
-}
-
-.payment-select-btn:hover .arrow {
-    transform: translateX(5px);
-}
-
-.payment-modal-footer {
-    text-align: center;
-    padding: 20px 40px 40px;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.payment-modal-footer p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-/* Animation for payment options */
-.payment-option-card {
-    animation: fadeInScale 0.5s ease forwards;
-    opacity: 0;
-}
-
-.payment-option-card:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.payment-option-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
 
 @keyframes fadeInScale {
     from {
@@ -1956,25 +1830,6 @@ footer {
     }
 }
 
-/* Responsive for payment modal */
-@media (max-width: 768px) {
-    .payment-options-container {
-        grid-template-columns: 1fr;
-        padding: 30px 20px;
-    }
-
-    .payment-modal-header {
-        padding: 30px 20px 20px;
-    }
-
-    .payment-modal-header h2 {
-        font-size: 1.5rem;
-    }
-
-    .payment-option-card {
-        padding: 25px;
-    }
-}
 
 /* Ensure the title animation is observed and played */
 .map-section .section-title[style*="animation-play-state: running"] {

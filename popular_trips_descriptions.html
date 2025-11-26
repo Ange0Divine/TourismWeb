@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Destinations - Seek Wild Africa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2B2B2B;
+            background: #f9ecd4;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Navigation */
+       
+        
+       
+
+        /* Hero Section */
+        .destination-hero {
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .destination-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(31, 94, 59, 0.8), rgba(226, 122, 39, 0.6));
+        }
+
+        .destination-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .destination-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .destination-hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Trip Card */
+        .trip-card {
+            background: #F4E9DA;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            border: 3px solid #F4E9DA;
+            transition: all 0.3s;
+        }
+
+        .trip-card:hover {
+            box-shadow: 0 20px 60px rgba(31, 94, 59, 0.2);
+            border-color: #1F5E3B;
+        }
+
+        .trip-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        /* Image Gallery Section */
+        .trip-image-section {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1.5fr 1fr;
+            gap: 10px;
+            min-height: 550px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(31, 94, 59, 0.05), rgba(226, 122, 39, 0.05));
+        }
+
+        .trip-image-section.single-image {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+        }
+
+        .trip-image-main {
+            grid-column: 1 / -1;
+            grid-row: 1 / 2;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .trip-image-main:hover {
+            transform: scale(1.02);
+        }
+
+        .trip-image-secondary {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .trip-image-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        
+
+        
+
+        .trip-badge {
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            background: linear-gradient(135deg, #1F5E3B, #E27A27);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .trip-badge::before {
+            content: "⏱️";
+            font-size: 1.2rem;
+        }
+
+        /* Info Section */
+        .trip-info-section {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .trip-header h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: #1F5E3B;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .trip-location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #E27A27;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .trip-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .trip-value-section {
+            background: rgba(31, 94, 59, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #1F5E3B;
+            margin: 25px 0;
+        }
+
+        .trip-value-section h4 {
+            color: #1F5E3B;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .trip-value-section p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .trip-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 18px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, #1F5E3B, #E27A27);
+            color: white;
+            box-shadow: 0 10px 30px rgba(31, 94, 59, 0.3);
+        }
+
+        .action-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(31, 94, 59, 0.5);
+        }
+
+        .action-btn.secondary {
+            background: white;
+            color: #1F5E3B;
+            border: 2px solid #1F5E3B;
+        }
+
+        .action-btn.secondary:hover {
+            background: #1F5E3B;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Itinerary Section */
+        .itinerary-section {
+            padding: 40px 50px;
+            background: #F4E9DA;
+        }
+
+        .itinerary-section h3 {
+            color: #1F5E3B;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .itinerary-day {
+            margin-bottom: 2px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            border: 2px solid #E27A27;
+        }
+
+        .itinerary-day h4 {
+            color: #E27A27;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .itinerary-day p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Inclusions Section */
+        .inclusions-section {
+            padding: 40px 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: #F4E9DA;
+        }
+
+        .inclusion-box {
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .inclusion-box.included {
+            background: rgba(31, 94, 59, 0.05);
+            border: 2px solid #1F5E3B;
+        }
+
+        .inclusion-box.excluded {
+            background: rgba(226, 122, 39, 0.05);
+            border: 2px solid #E27A27;
+        }
+
+        .inclusion-box h4 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .inclusion-box.included h4 {
+            color: #1F5E3B;
+        }
+
+        .inclusion-box.excluded h4 {
+            color: #E27A27;
+        }
+
+        .inclusion-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .inclusion-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .inclusion-list li:before {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .inclusion-box.included .inclusion-list li:before {
+            content: "✓";
+            color: #1F5E3B;
+        }
+
+        .inclusion-box.excluded .inclusion-list li:before {
+            content: "✗";
+            color: #E27A27;
+        }
+
+        /* Footer */
+        footer {
+            background: #2B2B2B;
+            color: white;
+            padding: 40px 3% 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #E27A27;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #E27A27;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 0px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 968px) {
+            .trip-content {
+                grid-template-columns: 1fr;
+            }
+
+            .trip-image-section {
+                min-height: 350px;
+            }
+
+            .trip-info-section {
+                padding: 30px;
+            }
+
+            .inclusions-section {
+                padding: 30px 20px;
+                grid-template-columns: 1fr;
+            }
+
+            .itinerary-section {
+                padding: 30px 20px;
+            }
+
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+     <nav>
+  <div class="logo">🦍 Seek Wild Africa</div>
+
+  <div class="menu-toggle" id="menu-toggle">☰</div>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#Plan Your Trip">Plan Your Trip</a></li>
+    <li><a href="#safaris">Tours & Safaris</a></li>
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+    <a href="index.html#safaris" class="nav-btn">Go Back</a>
+  
+</nav>
+
+    <!-- Hero Section -->
+    <div class="destination-hero" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1600&q=80');">
+        <div class="destination-hero-content">
+            <h1>Discover Our Top Safari Destinations</h1>
+            <p>Explore the most breathtaking wildlife and primate destinations in Rwanda and Uganda</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section style="padding: 80px 5%; background: #F4E9DA;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            
+            <!-- Trip 1: Akagera National Park -->
+             <section id="1day-Akagera-It">
+            <div class="trip-card">
+                <div class="trip-content">
+                    <div class="trip-image-section">
+                        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80" alt="Akagera National Park Elephants" class="trip-image-main">
+                        <img src="https://images.unsplash.com/photo-1665070385454-5e0c4421a38c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWthZ2VyYSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D" alt="Akagera Lions" class="trip-image-secondary">
+                        <img src="https://images.unsplash.com/photo-1484406566174-9da000fda645?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YW5pbWFsfGVufDB8fDB8fHww" alt="Akagera Landscape" class="trip-image-secondary">
+                       
+                       
+                    </div>
+                    <div class="trip-info-section">
+                        <div>
+                            <div class="trip-header">
+                                <h2>1 Day Akagera National Park Tour - Big Five Safari From Kigali</h2>
+                                <p style="font-style: italic; text-align: center; color: #1F5E3B;">A Full-Day Wildlife Adventure Through Rwanda’s Only Savannah Park</p>
+                                <div class="trip-location">📍 Eastern Rwanda</div>
+                            </div>
+                            
+                            <p class="trip-description">
+                                This 1 Day Tour to Akagera National Park from Kigali is the perfect way to experience Rwanda’s Big Five in a single, well-organized day trip. Akagera is Rwanda’s only savannah park and one of East Africa’s most inspiring conservation success stories — once heavily threatened,
+                                 now thriving with protected wildlife, open plains, lakes, and rolling hills.
+                             This day trip offers a full game drive, storytelling from your expert guide, peaceful savannah scenery, and a relaxing lunch break inside the park. It’s ideal for travelers seeking a smooth, memorable, and highly rewarding Akagera day safari without needing an overnight stay.
+                        </p>
+                        <div class="trip-value-section">
+                                <h4>The Value of This Trip</h4>
+                                <p>This day safari leaves you with powerful memories of Rwanda's natural beauty — wide-open landscapes, peaceful lakes, rich wildlife, and the inspiring conservation story behind Akagera National Park. It's the perfect escape for travelers wanting a complete, refreshing safari experience in just one day.</p>
+                            </div>
+                        </div>
+
+                        <div class="trip-actions">
+                            <a href="quote.html" class="action-btn primary">Book Now →</a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary Section -->
+                <div class="itinerary-section" id="akagera-details">
+                    <h3>Itinerary</h3>
+                    <div class="itinerary-day">
+                        <h4>Kigali Pickup → Scenic Drive to Akagera → Full Game Drive → Lunch in the Park → Return to Kigali</h4>
+                        <p>Your guide will pick you up early from your hotel in Kigali, beginning a scenic journey east toward Akagera National Park, passing through Rwanda's gentle hills and rural landscapes. Along the way, your guide shares stories about the region's culture, history, and the incredible conservation journey that transformed Akagera into the thriving wildlife haven it is today.</p>
+                        <p>Upon arrival, enter the park for a full-day game drive, exploring the southern woodlands and continuing through open plains and lakes toward the northern savannah. Your guide will interpret animal tracks, landscapes, and interesting ecological facts, keeping the tour engaging and informative.</p>
+                        <p>Around midday, stop at a beautiful viewpoint for a relaxing picnic lunch inside the park, surrounded by peaceful natural scenery.</p>
+                        <p>After lunch, continue your game drive through the northern plains — the most scenic and rewarding part of Akagera — enjoying open views, wildlife sightings, and a calm, refreshing environment.</p>
+                        <p>In the late afternoon, exit the park through the northern gate and enjoy a comfortable drive back to Kigali. Your guide will drop you off at your hotel or airport, completing your unforgettable Akagera day trip.</p>
+                    </div>
+                </div>
+
+                <div class="inclusions-section">
+                    <div class="inclusion-box included">
+                        <h4>✓ What's Included</h4>
+                        <ul class="inclusion-list">
+                            <li>Professional, friendly safari guide</li>
+                            <li>Comfortable 4x4 safari vehicle</li>
+                            <li>Akagera National Park entrance fees</li>
+                            <li>Full-day game drive</li>
+                            <li>Picnic lunch inside the park</li>
+                            <li>Drinking water & soft drinks</li>
+                            <li>Pick-up and drop-off in Kigali</li>
+                            <li>All government taxes</li>
+                        </ul>
+                    </div>
+                    <div class="inclusion-box excluded">
+                        <h4>✗ What's Excluded</h4>
+                        <ul class="inclusion-list">
+                            <li>International flights</li>
+                            <li>Personal travel insurance</li>
+                            <li>Alcoholic drinks</li>
+                            <li>Tips for guide</li>
+                            <li>Optional activities not listed</li>
+                            <li>Personal expenses</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="itinerary-section" id="akagera-details">
+                    
+                    <div class="itinerary-day">
+                        <h4>WHY CHOOSE SEEK WILD AFRICA</h4>
+                        <p>Seek Wild Africa ensures a smooth, safe, and enriching safari experience. With trusted expert guides,
+                        comfortable 4x4 vehicles, and responsible tourism practices, your Akagera adventure feels easy, well-planned, and memorable.
+                         We are dedicated to offering warm service and authentic wildlife experiences that stand out.
+                        </p> <br>
+                        <h4>NB:</h4>
+                        <p>This Akagera day trip can be customized to include a sunrise start, a boat safari, or an extended northern game drive depending on your preference.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section style="padding: 80px 5%; background: #F4E9DA;" id="1day-Akagera-It">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            
+            <!-- 4 DAYS UGANDA  GORILLA TREK BWINDI SAFARIS & MGAHINGA GORILLA NATIONAL PARK  GOLDEN MONKEY – FROM KIGALI -->
+            
+            <div class="trip-card">
+                <div class="trip-content">
+                    <div class="trip-image-section">
+                        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80" alt="Akagera National Park Elephants" class="trip-image-main">
+                        <img src="https://images.unsplash.com/photo-1665070385454-5e0c4421a38c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWthZ2VyYSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D" alt="Akagera Lions" class="trip-image-secondary">
+                        <img src="https://images.unsplash.com/photo-1484406566174-9da000fda645?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YW5pbWFsfGVufDB8fDB8fHww" alt="Akagera Landscape" class="trip-image-secondary">
+                       
+                       
+                    </div>
+                    <div class="trip-info-section">
+                        <div>
+                            <div class="trip-header">
+                                <h2>4 Days Uganda Gorilla Trek Bwindi Safaris & Mgahinga Gorilla National Park Golden Monkey - from Kigali</h2>
+                                <p style="font-style: italic; text-align: center; color: #1F5E3B;">#1 Recommended Primate Safari for Uganda & Rwanda Travelers</p>
+                                <div class="trip-location">📍 Uganda </div>
+                            </div>
+                            
+                            <p class="trip-description">
+                               This 4 Days Uganda Gorilla Trek & Golden Monkey Safari is one of the best and most affordable primate tours from Kigali, 
+                               giving you fast access to Uganda’s Bwindi and Mgahinga parks through a safe and scenic cross-border route. With cheaper gorilla permits, breathtaking mountain landscapes, and two of Africa’s rarest primates in one trip, this safari offers unbeatable value. Led by your friendly, professional cross-border guide, you enjoy smooth travel, expert storytelling, cultural insights, 
+                               and an unforgettable gorilla trekking + golden monkey experience — the perfect Uganda primate adventure.
+                            </p>
+                        <div class="trip-value-section">
+                                <h4>The Value of This Trip</h4>
+                                <p>This tour gives you two incredible primate experiences — gorillas and golden monkeys — at the most affordable price in East Africa, with a faster and easier starting point from Kigali. Safe, smooth, emotional, and culture-rich, it is the top choice for travelers seeking a powerful primate adventure.</p>
+                            </div>
+                        </div>
+
+                        <div class="trip-actions">
+                            <a href="quote.html" class="action-btn primary">Book Now →</a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary Section -->
+                <div class="itinerary-section" id="akagera-details">
+                    <h3>Itinerary</h3>
+                    <div class="itinerary-day">
+                        <h4>DAY 1 — Kigali Pick-Up → Scenic Rwanda–Uganda Drive → Mgahinga National Park</h4>
+                        <p>Your friendly Seek Wild Africa guide will pick you up from Kigali and begin a beautiful countryside drive toward the Uganda border.
+                             After a smooth crossing, guided with ease by your experienced cross-border expert, continue through the Virunga volcano region with a stop for lunch en route.
+                             By late afternoon, arrive at Mgahinga Gorilla National Park for check-in, relaxation, dinner and overnight at your lodge.
+                            .</p><br>
+
+                        <h4>DAY 2 — Golden Monkey Trekking → Lunch → Transfer to Bwindi Forest</h4>
+                        <p>After breakfast, your guide escorts you to the park headquarters for your Golden Monkey Trekking experience — a lively encounter with active,
+                             fast-moving primates in the bamboo forest. After the trek, enjoy lunch at the lodge, then begin the scenic transfer to Bwindi Impenetrable Forest, arriving in the afternoon for check-in.
+                             Relax and enjoy the quiet mountain atmosphere, followed by dinner and overnight in Bwindi.</p><br>
+                            
+                        <h4>DAY 3 — Gorilla Trekking in Bwindi → Lunch → Batwa Cultural Experience</h4>
+                        <p>Your guide will take you early to the Bwindi briefing point before starting your unforgettable Gorilla Trekking Uganda adventure. Hike through thick rainforest until you meet a gorilla family — a truly emotional, once-in-a-lifetime wildlife moment. After your trek, enjoy a warm lunch,
+                             then visit the Batwa Cultural Community to learn about Uganda’s first forest people. Return to your lodge for dinner and overnight.</p><br>
+                         
+                        <h4>DAY 4 — Breakfast → Scenic Drive Back to Kigali → Shopping → Departure</h4>
+                        <p>After breakfast, your guide drives you back to Rwanda through the stunning Volcanoes National Park region, offering beautiful photo stops. Once in Kigali, enjoy shopping at local craft markets for handmade gifts, baskets, artwork, and Rwandan coffee.
+                             Your guide ends the trip with a smooth drop-off at Kigali International Airport or your hotel for departure.</p><br>    
+                    </div>
+                </div>
+
+                <div class="inclusions-section">
+                    <div class="inclusion-box included">
+                        <h4>✓ What's Included</h4>
+                        <ul class="inclusion-list">
+                            <li>Professional cross-border safari guide</li>
+                            <li>Comfortable 4x4 safari vehicle</li>
+                            <li>Gorilla trekking permit (Bwindi)</li>
+                            <li>Golden monkey trekking permit (Mgahinga)</li>
+                            <li>Batwa Cultural Experience</li>
+                            <li>3 nights mid-range accommodation</li>
+                            <li>Meals:<br>
+                                o	Day 1: Lunch & Dinner<br>
+                                o	Day 2: Breakfast, Lunch & Dinner<br>
+                                o	Day 3: Breakfast, Lunch & Dinner<br>
+                                o	Day 4: Breakfast & Lunch
+                            </li>
+                            <li>Drinking water & soft drinks</li>
+                            <li>Park fees & government taxes</li>
+                            <li>Kigali pick-up & drop-off</li>
+                        </ul>
+                    </div>
+                    <div class="inclusion-box excluded">
+                        <h4>✗ What's Excluded</h4>
+                        <ul class="inclusion-list">
+                            <li>International flights</li>
+                            <li>Personal travel insurance</li>
+                            <li>Alcoholic drinks</li>
+                            <li>Tips</li>
+                            <li>Optional activities</li>
+                            <li>Personal expenses</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="itinerary-section" id="akagera-details">
+                    
+                    <div class="itinerary-day">
+                        <h4>WHY CHOOSE SEEK WILD AFRICA</h4>
+                        <p>Seek Wild Africa provides exceptionally smooth cross-border safaris, with friendly guides, deep wildlife knowledge, cultural interpretation, and safe, comfortable 4x4 vehicles.
+                             From Kigali pickup to gorilla trekking and your final drop-off, we ensure a warm, professional, unforgettable safari experience.
+                        </p> <br>
+                        <h4>NB:</h4>
+                        <p>This safari can be customized based on your travel dates, preferred lodges, or activity interests.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section style="padding: 80px 5%; background: #F4E9DA;" id="1day-Jinja-It">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            
+            <!-- 1 DAY JINJA TOUR FROM KAMPALA – SOURCE OF THE NILE & WHITE WATER RAFTING -->
+            
+            <div class="trip-card">
+                <div class="trip-content">
+                    <div class="trip-image-section">
+                        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80" alt="Akagera National Park Elephants" class="trip-image-main">
+                        <img src="https://images.unsplash.com/photo-1665070385454-5e0c4421a38c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWthZ2VyYSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D" alt="Akagera Lions" class="trip-image-secondary">
+                        <img src="https://images.unsplash.com/photo-1484406566174-9da000fda645?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YW5pbWFsfGVufDB8fDB8fHww" alt="Akagera Landscape" class="trip-image-secondary">
+                       
+                       
+                    </div>
+                    <div class="trip-info-section">
+                        <div>
+                            <div class="trip-header">
+                                <h2>1 Day Jinja Tour fro Kampala - Source of the Nile & White Water Rafting</h2>
+                                <p style="font-style: italic; text-align: center; color: #1F5E3B;">Most Affordable & Best-Rated Jinja Day Trip From Kampala</p>
+                                <div class="trip-location">📍 Uganda </div>
+                            </div>
+                            
+                            <p class="trip-description">
+                              This 1 Day Jinja Tour from Kampala is one of Uganda’s most popular, affordable, and best-reviewed adventure trips, perfect for travelers searching for the ultimate Source of the Nile Tour and White Water Rafting experience. Jinja is known as the Adventure Capital of East Africa, offering world-class rafting, beautiful river views, and rich cultural heritage.
+                              Your friendly, professional Seek Wild Africa driver–guide makes this day smooth, fun, and comfortable — showing you shortcuts, the best local spots, and insider tips that make this the #1 recommended Jinja day trip from Kampala. This package includes a peaceful boat ride to the Source of the River Nile followed by a thrilling white water rafting adventure on the legendary Nile.
+
+                            </p>
+                        <div class="trip-value-section">
+                                <h4>Why This Jinja Day Trip is #1 Recommended</h4>
+                                <p>It offers the perfect mix of adventure + relaxation — a peaceful Source of the Nile visit followed by thrilling rafting — all in one day from Kampala, with a professional guide and great value for money.</p>
+                            </div>
+                        </div>
+
+                        <div class="trip-actions">
+                            <a href="quote.html" class="action-btn primary">Book Now →</a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary Section -->
+                <div class="itinerary-section" id="akagera-details">
+                    <h3>Itinerary</h3>
+                    <div class="itinerary-day">
+                        <h4>Morning — Pick-Up in Kampala → Drive to Jinja → Source of the Nile Boat Ride</h4>
+                        <p>Your Seek Wild Africa driver–guide picks you up early for your Kampala to Jinja day trip, driving along a scenic route with plantations and local villages. Upon arrival in Jinja, start your adventure with a small boat ride to the Source of the Nile — the exact place where the world’s longest river begins.
+                             Enjoy calm waters, birdlife, and stunning photos at the famous “Source of the Nile” marker.</p><br>
+
+                        <h4>Midday — Relaxation by the Nile & Riverside Lunch</h4>
+                        <p>After your boat ride, relax along the Nile and enjoy a delicious riverside lunch. 
+                            Your guide helps you choose the best, affordable restaurants with clean, fresh meals and beautiful river views.
+                        </p><br>
+                            
+                        <h4>Afternoon — White Water Rafting on the Nile (Full Adventure)</h4>
+                        <p>In the afternoon, join your rafting team for a safety briefing and begin your White Water Rafting on the Nile, one of the top-rated adventure activities in Uganda. Choose between full-adventure grade 5 rapids or a more relaxed beginner-friendly option.
+                             Professional rafting instructors ensure maximum safety and fun.</p><br>
+                         
+                        <h4>Evening — Drive Back to Kampala → Drop-Off at Hotel</h4>
+                        <p>After rafting, your guide drives you back to Kampala, arriving in the late afternoon or early evening.
+                             This marks the end of your unforgettable Jinja day trip from Kampala.</p><br>    
+                    </div>
+                </div>
+
+                <div class="inclusions-section">
+                    <div class="inclusion-box included">
+                        <h4>✓ What's Included</h4>
+                        <ul class="inclusion-list">
+                            <li>Professional, friendly driver–guide</li>
+                            <li>Comfortable 4x4 transport from Kampala to Jinja</li>
+                            <li>Source of the Nile boat trip</li>
+                            <li>White water rafting experience</li>
+                            <li>Safety gear & expert rafting instructors</li>
+                            <li>Riverside lunch</li>
+                            <li>Drinking water</li>
+                            <li>Activity and entrance fees</li>
+                            <li>Pick-up & drop-off in Kampala</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="inclusion-box excluded">
+                        <h4>✗ What's Excluded</h4>
+                        <ul class="inclusion-list">
+                            <li>Travel insurance</li>
+                            <li>Alcoholic drinks</li>
+                            <li>Tips</li>
+                            <li>Personal expenses</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="itinerary-section" id="akagera-details">
+                    
+                    <div class="itinerary-day">
+                       
+                        </p><br>
+                        <h4>WHY CHOOSE SEEK WILD AFRICA</h4>
+                        <p>We are known for reliable, affordable, and highly professional Jinja tours, offering safe transport, friendly guides, and extremely smooth planning.
+                             Our team knows Jinja very well and guarantees you the best adventure day possible.</p> <br>
+                        <h4>NB:</h4>
+                        <p>This Jinja day tour can be upgraded to include:
+✔ Bungee Jumping
+✔ Quad Biking
+✔ Horse Riding
+✔ Sunset Cruise on the Nile
+✔ Zip Lining
+
+                        
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section style="padding: 80px 5%; background: #F4E9DA;" id="1day-Jinja-It">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            
+            <!-- 2 DAYS AKAGERA NATIONAL PARK – BIG FIVE SAFARIS RWANDA -->
+            
+            <div class="trip-card">
+                <div class="trip-content">
+                    <div class="trip-image-section">
+                        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80" alt="Akagera National Park Elephants" class="trip-image-main">
+                        <img src="https://images.unsplash.com/photo-1665070385454-5e0c4421a38c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWthZ2VyYSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D" alt="Akagera Lions" class="trip-image-secondary">
+                        <img src="https://images.unsplash.com/photo-1484406566174-9da000fda645?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YW5pbWFsfGVufDB8fDB8fHww" alt="Akagera Landscape" class="trip-image-secondary">
+                       
+                       
+                    </div>
+                    <div class="trip-info-section">
+                        <div>
+                            <div class="trip-header">
+                                <h2>1 Days Akagera National Park - Big Five Safaris Rwanda</h2>
+                                <p style="font-style: italic; text-align: center; color: #1F5E3B;">A Short, Smooth & Memorable Wildlife Adventure with Seek Wild Africa</p>
+                                <div class="trip-location">📍 Rwanda </div>
+                            </div>
+                            
+                            <p class="trip-description">
+                              This 2 Days Akagera National Park Safari is one of Rwanda’s most popular short wildlife experiences, starting with a gentle Kigali City Tour before heading into the country’s only savannah park. Akagera represents one of Africa’s greatest conservation comeback stories—once threatened, now fully restored and thriving with wildlife, beautiful lakes, rolling hills, and open plains.
+                               With Seek Wild Africa, you enjoy a smooth, comfortable journey in a 4x4 safari vehicle, guided by an experienced, friendly professional who ensures your safari is safe, easy, and truly memorable.
+                            </p>
+                        <div class="trip-value-section">
+                                <h4>WHY CHOOSE SEEK WILD AFRICA</h4>
+                                <p>Seek Wild Africa offers a smooth, reliable, and professional safari experience built on trust, local expertise, and a genuine passion for wildlife. Our guides are friendly, knowledgeable, and trained to give you an enjoyable and safe journey, while our comfortable 4x4 vehicles make every mile easy and relaxing. We operate responsibly, support conservation, and ensure every guest feels cared for from the moment the trip begins until the final drop-off.
+                                     With us, your safari is not only well-planned but also personal, warm, and unforgettable.</p>
+                            </div>
+                        </div>
+
+                        <div class="trip-actions">
+                            <a href="quote.html" class="action-btn primary">Book Now →</a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary Section -->
+                <div class="itinerary-section" id="akagera-details">
+                    <h3>Itinerary</h3>
+                    <div class="itinerary-day">
+                        <h4>DAY 1: Kigali City Tour → Transfer to Akagera → Short Game Drive → Sunset Boat Safari</h4>
+                        <p>Your guide will pick you up from your hotel in Kigali, beginning with a relaxed Kigali City Tour, showcasing the city’s beauty and viewpoints.
+                        Continue to Akagera National Park and enjoy a short scenic game drive as you head toward the lodge.
+                        In the evening, take a peaceful sunset boat safari on Lake Ihema — a calm and beautiful highlight of the trip.
+                        Dinner and overnight at your selected lodge (included).
+                        </p><br>
+
+                        <h4>DAY 2: Early Start → Full Day Game Drive → Picnic Lunch → Return to Kigali</h4>
+                        <p>Your guide will meet you early, ready for a full day exploring the northern savannahs of Akagera.
+                        Enjoy a full-day game drive featuring breathtaking landscapes, open plains, and lakes.
+                        Have a picnic lunch inside the park before continuing toward the northern exit.
+                        Return to Kigali for drop-off at your hotel or airport.
+
+                        </p><br>
+                    </div>
+                </div>
+
+                <div class="inclusions-section">
+                    <div class="inclusion-box included">
+                        <h4>✓ What's Included</h4>
+                        <ul class="inclusion-list">
+                            <li>Professional safari guide</li>
+                            <li>Comfortable 4x4 safari vehicle</li>
+                            <li>Akagera park entrance fees</li>
+                            <li>Game drives (Day 1 & Day 2)</li>
+                            <li>Sunset boat safari</li>
+                            <li>1 night mid-range accommodation</li>
+                             <li>Meals:<br>
+                                o	Day 1: Lunch & Dinner<br>
+                                o	Day 2: Breakfast <br>
+                             </li>
+                            <li>Soft drinks & drinking water</li>
+                            <li>Kigali pick-up & drop-off</li>
+                            <li>Taxes</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="inclusion-box excluded">
+                        <h4>✗ What's Excluded</h4>
+                        <ul class="inclusion-list">
+                            <li>International flights</li>
+                            <li>Personal Travel insurance</li>
+                            <li>Alcoholic drinks</li>
+                            <li>Tips</li>
+                            <li>Personal expenses</li>
+                            <li>Optional Activities not listed</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                 <div class="itinerary-section" id="akagera-details">
+                    
+                    <div class="itinerary-day">
+                       <h4>NB:</h4>
+                        <p>This safari can be fully customized to fit your schedule, preferred lodges, or travel style.</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section style="padding: 80px 5%; background: #F4E9DA;" id="1day-Jinja-It">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            
+            <!-- 3 DAYS GORILLA TREKKING SAFARI – VOLCANOES NATIONAL PARK, RWANDA -->
+            
+            <div class="trip-card">
+                <div class="trip-content">
+                    <div class="trip-image-section">
+                        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80" alt="Akagera National Park Elephants" class="trip-image-main">
+                        <img src="https://images.unsplash.com/photo-1665070385454-5e0c4421a38c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWthZ2VyYSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D" alt="Akagera Lions" class="trip-image-secondary">
+                        <img src="https://images.unsplash.com/photo-1484406566174-9da000fda645?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YW5pbWFsfGVufDB8fDB8fHww" alt="Akagera Landscape" class="trip-image-secondary">
+                       
+                       
+                    </div>
+                    <div class="trip-info-section">
+                        <div>
+                            <div class="trip-header">
+                                <h2>3 Days Gorilla Trekking Safari - Volcanoes National Park, Rwanda</h2>
+                                <p style="font-style: italic; text-align: center; color: #1F5E3B;">A Life-Changing Mountain Gorilla Experience With Seek Wild Africa</p>
+                                <div class="trip-location">📍 Rwanda </div>
+                            </div>
+                            
+                            <p class="trip-description">
+                              This 3 Days Gorilla Trekking Safari in Volcanoes National Park takes you from Kigali’s vibrant city highlights to the misty Virunga Mountains where Rwanda’s endangered mountain gorillas live. Rooted in the conservation legacy of Dr. Dian Fossey, now continued through The Ellen DeGeneres Campus of the Dian Fossey Gorilla Fund, this safari connects you to one of the world’s greatest wildlife protection stories. You’ll enjoy a Kigali City Tour, visit the Genocide Memorial, trek to see a gorilla family,
+                               and explore Rwanda’s culture at the Gorilla Guardian Village. A smooth, meaningful, unforgettable adventure with Seek Wild Africa.
+                            </p>
+                        <div class="trip-value-section">
+                                <h4>THE VALUE OF THIS TRIP</h4>
+                                <p>This experience leaves you connected deeply to nature, conservation, and Rwanda’s inspiring story. From standing where Dian Fossey worked to seeing gorillas in their natural home, 
+                                    this safari offers emotional impact, cultural discovery, and lifelong memories — all delivered with comfort and care by Seek Wild Africa.</p>
+                            </div>
+                        </div>
+
+                        <div class="trip-actions">
+                            <a href="quote.html" class="action-btn primary">Book Now →</a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary Section -->
+                <div class="itinerary-section" id="akagera-details">
+                    <h3>Itinerary</h3>
+                    <div class="itinerary-day">
+                        <h4>DAY 1: Kigali Pickup → City Tour → Genocide Memorial → Transfer to Volcanoes → Dinner & Overnight</h4>
+                        <p>Your guide will pick you up from your hotel in Kigali, starting with a relaxed Kigali City Tour showcasing the clean, modern beauty of the capital.
+Visit the Kigali Genocide Memorial, a powerful historical and educational center.
+Enjoy lunch at a local Rwandan restaurant before driving through beautiful countryside to Volcanoes National Park.
+Arrive at your lodge for dinner and overnight (included).
+
+                        </p><br>
+
+                        <h4>DAY 2: Gorilla Trekking → Local Lunch → Gorilla Guardian Village → Dinner & Overnight</h4>
+                        <p>Your guide will take you early to the park headquarters for your gorilla trekking briefing.
+Begin your trek through bamboo forests and misty slopes to meet a mountain gorilla family — a magical and emotional hour you will never forget.
+After your trek, enjoy lunch at a local restaurant, tasting fresh Rwandan dishes.
+In the afternoon, visit the Gorilla Guardian Village for cultural performances, traditional activities, and community stories.
+Return to your lodge for dinner and overnight.
+
+
+                        </p><br>
+                         <h4>DAY 3: Visit the Dian Fossey / Ellen DeGeneres Campus → Shopping for Local Gifts → Return to Kigali → Departure</h4>
+                        <p>Your guide will meet you after breakfast and drive you to visit the Dian Fossey – Ellen DeGeneres Campus, a world-class conservation center showcasing the history, research, and protection of Rwanda’s mountain gorillas.
+     After the visit, enjoy local gift shopping in Musanze or Kigali — perfect for handmade souvenirs, crafts, art, and Rwanda-themed gifts.
+      Continue your drive back to Kigali for drop-off at your hotel or airport, marking the end of your unforgettable safari.
+
+
+
+                        </p><br>
+                    </div>
+                </div>
+
+                <div class="inclusions-section">
+                    <div class="inclusion-box included">
+                        <h4>✓ What's Included</h4>
+                        <ul class="inclusion-list">
+                            <li>Professional, friendly safari guide</li>
+                            <li>Comfortable 4x4 safari vehicle</li>
+                            <li>Gorilla trekking permit</li>
+                            <li>Kigali City Tour</li>
+                            <li>Visit to Kigali Genocide Memorial</li>
+                            <li>Visit to Dian Fossey / Ellen DeGeneres Campus</li>
+                            <li>Gorilla Guardian Village experience</li>
+                            <li>2 night mid-range accommodation</li>
+                             <li>Meals:<br>
+                                o	Day 1: Lunch & Dinner<br>
+                                o	Day 2: Breakfast, Lunch & Dinner <br>
+                                o	Day 3: Breakfast, Lunch & (Optional Dinner) <br>
+                             </li>
+                            <li>Soft drinks & drinking water in the Vehicle</li>
+                            <li>Park entrance fees</li>
+                            <li>Pick-up & drop-off</li>
+                            <li>All Government Taxes</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="inclusion-box excluded">
+                        <h4>✗ What's Excluded</h4>
+                        <ul class="inclusion-list">
+                            <li>International flights</li>
+                            <li>Personal Travel insurance</li>
+                            <li>Alcoholic beverages</li>
+                            <li>Tips for Guide & lodge staff</li>
+                            <li>Personal expenses</li>
+                            <li>Optional Activities not listed</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                 <div class="itinerary-section" id="akagera-details">
+                    
+                    <div class="itinerary-day">
+                         <h4>WHY CHOOSE SEEK WILD AFRICA</h4>
+                        <p>Seek Wild Africa provides a smooth, trusted, and expertly guided safari experience. Our team is experienced, responsible, and passionate about conservation. We offer reliable 4x4 vehicles, professional guides,
+                             and thoughtful planning so your journey feels easy, safe, and meaningful from start to finish.</p>
+                       <h4>NB:</h4>
+                        <p>This safari can be fully customized to fit your schedule, preferred lodges, or travel style.</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section style="padding: 80px 5%; background: #F4E9DA;" id="3days-Bwindi-It">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            
+            <!-- 3 DAYS UGANDA GORILLA TREKKING SAFARIS EXPERIENCE  – BWINDI IMPENETRABLE NATIONAL PARK-->
+            
+            <div class="trip-card">
+                <div class="trip-content">
+                    <div class="trip-image-section">
+                        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80" alt="Akagera National Park Elephants" class="trip-image-main">
+                        <img src="https://images.unsplash.com/photo-1665070385454-5e0c4421a38c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWthZ2VyYSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D" alt="Akagera Lions" class="trip-image-secondary">
+                        <img src="https://images.unsplash.com/photo-1484406566174-9da000fda645?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YW5pbWFsfGVufDB8fDB8fHww" alt="Akagera Landscape" class="trip-image-secondary">
+                       
+                       
+                    </div>
+                    <div class="trip-info-section">
+                        <div>
+                            <div class="trip-header">
+                                <h2>3 Days Uganda Gorilla Trekking Safaris Experience - Bwindi Impenetrable National Park</h2>
+                                <p style="font-style: italic; text-align: center; color: #1F5E3B;">#1 Recommended & Most Affordable Gorilla Trekking Safari From Kigali – A Once-in-a-Lifetime Experience</p>
+                                <div class="trip-location">📍 Rwanda </div>
+                            </div>
+                            
+                            <p class="trip-description">
+                              This 3 Days Uganda Gorilla Trekking Safari in Bwindi Impenetrable Forest is one of the #1 recommended, most affordable, and most rewarding gorilla tours in East Africa. Starting from Kigali, Rwanda, this safari gives you the rare advantage of flying into Kigali International Airport (shorter drive, safer, faster) while trekking Uganda’s mountain gorillas at a far more affordable permit cost compared to Rwanda.
+You begin with a meaningful Kigali Genocide Memorial visit, then travel through the scenic Virunga volcano region toward Bwindi—a UNESCO World Heritage rainforest famous for its endangered mountain gorillas. Led by your professional cross-border safari guide, highly experienced in Rwanda–Uganda wildlife journeys, your trip is smooth, safe, and rich in storytelling.
+In Bwindi, you trek to meet a gorilla family—a once-in-a-lifetime encounter that touches the heart. You will also enjoy a Batwa Cultural Experience, learning the traditions of the first forest people. Your journey finishes by returning through Rwanda, giving you beautiful views of Volcanoes National Park—a perfect “two countries, one experience” safari that truly feels like killing two birds with one stone.
+
+                            </p>
+                        <div class="trip-value-section">
+                                <h4>THE VALUE OF THIS TRIP</h4>
+                                <p>This safari gives you:
+✔ Cheaper gorilla permits (Uganda)
+✔ Shorter drive from Kigali (easier than Kampala)
+✔ Two countries in one safari
+✔ Deeper conservation experience
+✔ Meaningful cultural connection
+✔ Safe, smooth, expertly guided travel
+It’s widely recommended as the best & most affordable Gorilla Trek in East Africa.
+</p>
+                            </div>
+                        </div>
+
+                        <div class="trip-actions">
+                            <a href="quote.html" class="action-btn primary">Book Now →</a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary Section -->
+                <div class="itinerary-section" id="akagera-details">
+                    <h3>Itinerary</h3>
+                    <div class="itinerary-day">
+                        <h4>DAY 1 — Pick-Up in Kigali → Kigali Genocide Memorial → Drive to Bwindi → Dinner & Overnight</h4>
+                        <p>Morning: Your professional Seek Wild Africa guide picks you up from Kigali International Airport or from Hotel then  Start with a powerful visit to the Kigali Genocide Memorial, learning Rwanda’s history and resilience.
+Midday: Lunch in Kigali, then begin the scenic drive toward Bwindi Impenetrable National Park, passing the beautiful Virunga Volcanoes and lush countryside.
+Afternoon: Cross the border smoothly with the help of your guide, experienced in cross-border Rwanda–Uganda safaris, ensuring comfort, safety, and easy procedures.
+Evening: Arrive at your lodge in Bwindi for dinner & overnight, ready for your big day tomorrow.
+
+
+                        </p><br>
+
+                        <h4>DAY 2 — Gorilla Trekking in Bwindi → Local Lunch → Batwa Cultural Experience → Overnight</h4>
+                        <p>Morning: Your guide escorts you to the Bwindi briefing point. Begin your Gorilla Trekking Uganda adventure, hiking through the ancient rainforest until you meet a mountain gorilla family—a powerful, emotional, once-in-a-lifetime experience.
+Midday: Enjoy a warm local lunch with fresh Ugandan dishes.
+Afternoon: Visit the Batwa Cultural Community, learning forest traditions, music, dances, and the history of Uganda’s first people.
+Evening: Return to your lodge for dinner & overnight.
+
+
+
+                        </p><br>
+                         <h4>DAY 3 — Breakfast → Scenic Drive Back to Kigali (Via Volcanoes NP) → Shopping → Departure</h4>
+                        <p>Morning: After breakfast, your guide leads you on a beautiful drive back toward Rwanda, passing stunning views of Volcanoes National Park—giving you both Uganda & Rwanda landscapes in one trip.
+Midday: Arrive in Kigali for local gift shopping—handmade baskets, art, crafts, coffee, and souvenirs.
+Afternoon: Drop-off at Kigali International Airport or your hotel for departure.
+
+
+
+
+                        </p><br>
+                    </div>
+                </div>
+
+                <div class="inclusions-section">
+                    <div class="inclusion-box included">
+                        <h4>✓ What's Included</h4>
+                        <ul class="inclusion-list">
+                            <li>Professional, experienced cross-border safari guide</li>
+                            <li>Comfortable 4x4 safari vehicle</li>
+                            <li>Gorilla trekking permit(Bwindi)</li>
+                            <li>Kigali City Tour</li>
+                            <li>Visit to Kigali Genocide Memorial</li>
+                            <li>Batwa Cultural Experience</li>
+                            <li>2 night mid-range accommodation</li>
+                             <li>Meals:<br>
+                                o	Day 1: Lunch & Dinner<br>
+                                o	Day 2: Breakfast, Lunch & Dinner <br>
+                                o	Day 3: Breakfast<br>
+                             </li>
+                            <li>Soft drinks & drinking water in the Vehicle</li>
+                            <li>All park fees & government taxes</li>
+                            <li>Border assistance</li>
+                            <li>Airport/hotel pick-up & drop-off</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="inclusion-box excluded">
+                        <h4>✗ What's Excluded</h4>
+                        <ul class="inclusion-list">
+                            <li>International flights</li>
+                            <li>Personal Travel insurance</li>
+                            <li>Alcoholic drinks</li>
+                            <li>Tips </li>
+                            <li>Personal expenses</li>
+                            <li>Optional activities </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                 <div class="itinerary-section" id="akagera-details">
+                    
+                    <div class="itinerary-day">
+                         <h4>WHY CHOOSE SEEK WILD AFRICA</h4>
+                        <p>With Seek Wild Africa, your safari is guided by professionals who have years of Rwanda–Uganda cross-border experience, deep wildlife knowledge, and strong storytelling. 
+                            Our clean 4x4 vehicles, responsible tourism values, and warm hospitality make your journey safe, easy, emotional, and unforgettable. We are praised for honesty, smooth planning, and exceptional guest care.</p>
+                       <h4>NB:</h4>
+                        <p>This safari can be fully customized to fit your schedule, preferred lodges, or travel style.</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section style="padding: 80px 5%; background: #F4E9DA;" id="4days-Volcanoes&Kivu-It">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            
+            <!-- 4 DAYS VOLCANOES NATIONAL PARK SAFARI – GORILLAS, GOLDEN MONKEYS & LAKE KIVU.-->
+            
+            <div class="trip-card">
+                <div class="trip-content">
+                    <div class="trip-image-section">
+                        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&q=80" alt="Akagera National Park Elephants" class="trip-image-main">
+                        <img src="https://images.unsplash.com/photo-1665070385454-5e0c4421a38c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWthZ2VyYSUyMG5hdGlvbmFsJTIwcGFya3xlbnwwfHwwfHx8MA%3D%3D" alt="Akagera Lions" class="trip-image-secondary">
+                        <img src="https://images.unsplash.com/photo-1484406566174-9da000fda645?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YW5pbWFsfGVufDB8fDB8fHww" alt="Akagera Landscape" class="trip-image-secondary">
+                       
+                       
+                    </div>
+                    <div class="trip-info-section">
+                        <div>
+                            <div class="trip-header">
+                                <h2>4 Days Volcanoes National Park Safari - Gorillas, Golden Monkeys & Lake Kivu</h2>
+                                <p style="font-style: italic; text-align: center; color: #1F5E3B;">A Stunning Primate & Relaxation Experience in Rwanda’s Most Magical Region</p>
+                                <div class="trip-location">📍 Rwanda </div>
+                            </div>
+                            
+                            <p class="trip-description">
+                              This 4 Days Volcanoes National Park Safari combines Rwanda’s three top experiences: gorilla trekking, golden monkey trekking, and relaxation on Lake Kivu.
+                               Explore the legendary Virunga Mountains, home to the world’s last mountain gorillas, and enjoy Rwanda’s most beautiful lakeside scenery. This trip blends wildlife, culture, conservation, and calm moments—perfectly crafted for a smooth, memorable adventure with Seek Wild Africa.
+                            </p>
+                        <div class="trip-value-section">
+                                <h4>THE VALUE OF THIS TRIP</h4>
+                                <p>This adventure leaves you with powerful memories—meeting mountain gorillas, exploring the Virunga region, discovering playful golden monkeys, and ending with peaceful Lake Kivu moments. It blends wildlife, nature, culture, and relaxation into one smooth journey.
+</p>
+                            </div>
+                        </div>
+
+                        <div class="trip-actions">
+                            <a href="quote.html" class="action-btn primary">Book Now →</a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary Section -->
+                <div class="itinerary-section" id="akagera-details">
+                    <h3>Itinerary</h3>
+                    <div class="itinerary-day">
+                        <h4>DAY 1: Kigali Pickup → Kigali City Tour → Drive to Volcanoes National Park → Dinner & Overnight</h4>
+                        <p>Your guide will pick you up in Kigali, starting with a short Kigali City Tour to enjoy the beauty and cleanliness of Rwanda’s capital.
+Visit key viewpoints or cultural spots before driving through scenic countryside to Volcanoes National Park.
+Arrive at your lodge for dinner and overnight.
+
+
+                        </p><br>
+
+                        <h4>DAY 2: Gorilla Trekking Experience → Local Lunch → Relax at Lodge</h4>
+                        <p>Your guide will take you early to the park headquarters for your gorilla trekking briefing.
+Begin your journey through bamboo forests to meet a mountain gorilla family—a powerful and unforgettable one-hour encounter.
+Enjoy lunch at a local restaurant, then relax at your lodge for the rest of the day.
+Dinner and overnight at your lodge.
+
+
+
+
+                        </p><br>
+                         <h4>DAY 3: Golden Monkey Trekking → Transfer to Lake Kivu → Sunset Moments & Overnight</h4>
+                        <p>Start the Early morning with a Golden Monkey Trek, following playful and fast-moving primates through the lower forests of Volcanoes National Park.
+After the trek, transfer to Lake Kivu, one of Africa’s most beautiful lakes.
+Relax at the lakeside, enjoy sunset views, and spend the evening at your hotel.
+
+</p><br>
+ <h4>DAY 4: Lake Kivu Relaxation → Optional Boat Ride → Return to Kigali → Departure</h4>
+                        <p>Enjoy a calm morning at Lake Kivu—perfect for relaxation, photography, or an optional boat ride.
+Drive back to Kigali with scenic stops along the way.
+Drop-off at your hotel or airport for departure.
+
+</p><br>
+                    </div>
+                </div>
+
+                <div class="inclusions-section">
+                    <div class="inclusion-box included">
+                        <h4>✓ What's Included</h4>
+                        <ul class="inclusion-list">
+                            <li>Professional, friendly safari guide</li>
+                            <li>Comfortable 4x4 safari vehicle</li>
+                            <li>Gorilla trekking permit</li>
+                            <li>Kigali City Tour</li>
+                            <li>Golden monkey trekking permit</li>
+                            <li>3 night mid-range accommodation</li>
+                             <li>Meals:<br>
+                                o	Day 1: Dinner<br>
+                                o	Day 2: Breakfast, Lunch & Dinner <br>
+                                o	Day 3: Breakfast, Lunch & Dinner<br>
+                                o	Day 4: Breakfast(Optional Lunch)<br>
+                             </li>
+                            <li>Soft drinks & drinking water in the Vehicle</li>
+                            <li>All park entrance fees</li>
+                            <li>Pick-up & drop-off</li>
+                            <li>All government taxes</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="inclusion-box excluded">
+                        <h4>✗ What's Excluded</h4>
+                        <ul class="inclusion-list">
+                            <li>International flights</li>
+                            <li>Personal Travel insurance</li>
+                            <li>Alcoholic drinks</li>
+                            <li>Optional Lake Kivu activities</li>
+                            <li>Tips for guide & hotel staff </li>
+                            <li>Personal expenses</li>
+                            
+                            
+                        </ul>
+                    </div>
+                </div>
+                 <div class="itinerary-section" id="akagera-details">
+                    
+                    <div class="itinerary-day">
+                         <h4>WHY CHOOSE SEEK WILD AFRICA</h4>
+                        <p>Seek Wild Africa provides seamless, safe, and highly enjoyable safari experiences. Our expert guides, comfortable 4x4 vehicles, and responsible travel approach ensure your trip is smooth from start to finish.
+                             We are trusted for professionalism, warm service, and deep knowledge of Rwanda’s wildlife and culture.</p>
+                       <h4>NB:</h4>
+                        <p>This safari can be fully customized to match your preferred hotels, activities, and travel dates.</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    
+ <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Seek Wild Africa</h3>
+                <p>Your trusted partner for authentic, responsible safaris in Rwanda & Uganda. We create meaningful connections with nature, wildlife, and local communities.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#safaris">Safaris</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Safaris</h3>
+                <ul>
+                    <li><a href="#akagera-details">Akagera Big Five</a></li>
+                    <li><a href="#bwindi-details">Bwindi Gorillas</a></li>
+                    <li><a href="#queen-details">Queen Elizabeth</a></li>
+                    <li><a href="#kibale-details">Kibale Chimps</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 10px;">📧 info@seekwildafrica.com</li>
+                    <li style="margin-bottom: 10px;">📞 +250 788 123 456</li>
+                    <li style="margin-bottom: 10px;">💬 WhatsApp Available</li>
+                    <li>📍 Kigali, Rwanda</li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seek Wild Africa. All rights reserved. Designed with ❤️ for wildlife lovers</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

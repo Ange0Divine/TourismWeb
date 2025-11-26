@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Destinations - Seek Wild Africa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .destination-hero {
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .destination-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(31, 94, 59, 0.8), rgba(226, 122, 39, 0.6));
+        }
+
+        .destination-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .destination-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .destination-hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .destination-section {
+            padding: 100px 5%;
+            position: relative;
+            
+        }
+
+        .destination-section:nth-child(even) {
+            background: linear-gradient(135deg, #F4E9DA 0%, #e8dcc8 100%);
+        }
+
+        .destination-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .destination-section:nth-child(even) .destination-content {
+            direction: rtl;
+        }
+
+        .destination-section:nth-child(even) .destination-content > * {
+            direction: ltr;
+        }
+
+        .destination-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .destination-images-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .destination-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+
+        .destination-img:hover {
+            transform: scale(1.05);
+        }
+
+        .destination-img img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .destination-img.large {
+            grid-column: 1 / -1;
+        }
+
+        .destination-img.large img {
+            height: 350px;
+        }
+
+        .destination-text h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #1F5E3B;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .destination-location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #E27A27;
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .destination-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .destination-highlights {
+            margin: 30px 0;
+        }
+
+        .destination-highlights h3 {
+            color: #1F5E3B;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            border-left: 4px solid #1F5E3B;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .highlight-item:hover {
+            transform: translateX(10px);
+            border-left-color: #E27A27;
+        }
+
+        .highlight-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-text {
+            font-size: 0.95rem;
+            color: #2B2B2B;
+            font-weight: 500;
+        }
+
+        .destination-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #1F5E3B, #E27A27);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .stat-box .number {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 5px;
+        }
+
+        .stat-box .label {
+            font-size: 0.85rem;
+            opacity: 0.95;
+        }
+
+        .best-time {
+            margin: 0;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            border: 2px solid #E27A27;
+        }
+
+        .image-column-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .image-column-cta .best-time {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .image-column-cta .cta-buttons {
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .image-column-cta .cta-btn {
+            flex: 1;
+            justify-content: center;
+            padding: 18px 20px;
+            font-size: 1rem;
+        }
+
+        .best-time h4 {
+            color: #1F5E3B;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .best-time p {
+            color: #666;
+            margin: 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .cta-btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .cta-btn.primary {
+            background: #1F5E3B;
+            color: white;
+            box-shadow: 0 10px 30px rgba(31, 94, 59, 0.3);
+        }
+
+        .cta-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(31, 94, 59, 0.5);
+        }
+
+        .cta-btn.secondary {
+            background: #E27A27;
+            color: white;
+            box-shadow: 0 10px 30px rgba(226, 122, 39, 0.3);
+        }
+
+        .cta-btn.secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(226, 122, 39, 0.5);
+        }
+
+        .back-home {
+            text-align: center;
+            padding: 60px 5%;
+            background: #F4E9DA;
+        }
+
+        .back-home a {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #1F5E3B, #E27A27);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-home a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(31, 94, 59, 0.4);
+        }
+
+        @media (max-width: 968px) {
+            .destination-content {
+                grid-template-columns: 1fr;
+            }
+
+            .destination-section:nth-child(even) .destination-content {
+                direction: ltr;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .destination-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .destination-hero {
+                height: 50vh;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🦍 Seek Wild Africa</div>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#Plan Your Trip">Plan Your Trip</a></li>
+            <li><a href="index.html#safaris">Tours & Safaris</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#categories" class="nav-btn">Go Back</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="destination-hero" style="background-image: url('https://images.unsplash.com/photo-1702498257321-6b5907efcda5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dG91cmlzbSUyMGluJTIwYWZyaWNhfGVufDB8fDB8fHww');">
+        <div class="destination-hero-content">
+            <h1>Explore Our Tour Categories</h1>
+            <p>Discover our diverse tour categories, from wildlife safaris to cultural and adventure experiences.</p>
+        </div>
+    </div>
+
+    <!-- Primates Description -->
+    <section class="destination-section" id="primates">
+        <div class="destination-content">
+            <div class="destination-images-wrapper">
+                <div class="destination-images">
+                    <div class="destination-img large">
+                        <img src="https://plus.unsplash.com/premium_photo-1661962292764-e46c7e3532dd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cHJpbWF0ZSUyMHRvdXJpc218ZW58MHx8MHx8fDA%3D" alt="Primate Adventures">
+                    </div>
+                    </div>
+                </div>
+                <div class="destination-text">
+                <h2>The Power of Primate Tourism</h2>
+                
+                <p>
+                   Primate adventures represent a profound and often humbling form of ecotourism, primarily centered on witnessing endangered species like mountain gorillas, chimpanzees, and various monkey and lemur species in their native rainforest habitats, particularly across East Africa (Rwanda, Uganda) and parts of Asia and Madagascar. 
+                   </p>
+            </div>
+        </div><br>
+        <div class="plan-text">
+    <p>These experiences, such as the famous gorilla trekking, offer tourists a rare, brief, and heavily regulated encounter with creatures that share a close evolutionary bond with humans. Beyond the thrill of the observation itself, responsible primate tourism plays a critical dual role: the substantial permit fees directly fund conservation efforts, anti-poaching patrols, and habitat protection, while simultaneously providing essential revenue and a powerful incentive for local communities to protect these animals and their ecosystems, thereby making the tourist a vital, if temporary, participant in global biodiversity preservation.
+               </p><br>
+            <div class="destination-text" style="text-align: center; color: #E27A27;">
+    --END OF PRIMATES ADVENTURES DESCRIPTION--
+</div></div>
+
+        
+    </section>
+
+    <!-- Classic Wildlife Safaris -->
+     <section class="destination-section" id="classics">
+        <div class="destination-content">
+            <div class="destination-images-wrapper">
+                <div class="destination-images">
+                    <div class="destination-img large">
+                        <img src="https://media.istockphoto.com/id/1212665850/photo/couple-young-people-watch-wild-elephants-on-safari-tour-in-national-park-in-africa.webp?a=1&b=1&s=612x612&w=0&k=20&c=FXCuIzHhcpO2dRWsQIVChJ-6UjFh04PMhXp3ztcrqaA=" alt="Bwindi Forest">
+                    </div>
+                </div>
+            </div>
+            <div class="destination-text">
+                <h2>Classic Wildlife Safaris</h2>
+                
+                <p>
+                   The classic wildlife safari experience in Uganda and Rwanda perfectly blends the dramatic landscapes of the East African savannah with lush, biodiverse tropical rainforests.
+                   <br><br> While Rwanda's Akagera National Park offers the quintessential Big Five game drives, showcasing lion, rhino, elephant, buffalo, and leopard, Uganda boasts several large, iconic savannah parks.
+                Key Ugandan destinations like Queen Elizabeth National Park are famed for their boat cruises on the Kazinga Channel, </p>
+            </div>
+        </div>
+        <div class="plan-text">
+    <p>offering close-up views of hippos and crocodiles—and the rare tree-climbing lions in the Ishasha sector. Further north, 
+        Murchison Falls National Park combines game viewing with the raw power of the Victoria Nile plunging through a narrow gorge.
+         These safaris typically feature open-top 4x4 vehicle game drives, scenic boat trips, and well-appointed lodges, 
+         collectively providing a comprehensive and captivating look at the region's incredible range of large mammal and birdlife.</p><br>
+            <div class="destination-text" style="text-align: center; color: #E27A27;">
+    --END OF CLASSIC WILDLIFE SAFARIS DESCRIPTION--
+</div></div>
+    </section>
+
+
+    <!-- Mountain & Volcanic Hikes -->
+     <section class="destination-section" id="mountains">
+        <div class="destination-content">
+            <div class="destination-images-wrapper">
+                <div class="destination-images">
+                    <div class="destination-img large">
+                        <img src="https://media.istockphoto.com/id/1254065320/photo/landscape-of-the-virunga-mountains-in-rwanda.webp?a=1&b=1&s=612x612&w=0&k=20&c=5TER5hVPXvZLpZObCVhIpC0AiJu5xeDIxcyqLC4X7Ws=" alt="Bwindi Forest">
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-text">
+                <h2>Mountain & Volcanic Hikes</h2>
+                
+                <p>
+                   The mountainous regions of Uganda and Rwanda provide a dramatically rugged backdrop for adventure tourism, particularly within the Virunga Volcanoes chain, which straddles their shared border.<br>
+                    In Rwanda's Volcanoes National Park, popular day hikes include the challenging ascent of Mount Bisoke to its stunning crater lake, and the two-day trek up Mount Karisimbi, </p>
+            </div>
+        </div>
+        <div class="plan-text">
+    <p>the highest peak in the range at 4,507 meters. Across the border in Uganda's Mgahinga Gorilla National Park, hikers often tackle Mount Sabyinyo, whose summit uniquely allows a hiker to stand in Uganda,
+         Rwanda, and the Democratic Republic of Congo simultaneously. Beyond the Virungas, Uganda is also home to the formidable Rwenzori Mountains (Mountains of the Moon), offering multi-day expeditions to snow-capped peaks.
+          These hikes not only challenge trekkers with varied difficulty and stunning alpine scenery but also traverse key conservation areas, sometimes offering glimpses of golden monkeys and contributing directly to the preservation of the Albertine Rift's endemic biodiversity.</p>
+        <div class="destination-text" style="text-align: center; color: #E27A27;">
+    --END OF MOUNTAINS AND VOLCANIC HIKES DESCRIPTION--
+</div></div>
+     </section>
+
+<!-- Culture and community Tours -->
+    </section>
+     <section class="destination-section" id="culture">
+        <div class="destination-content">
+            <div class="destination-images-wrapper">
+                <div class="destination-images">
+                    <div class="destination-img large">
+                        <img src="https://plus.unsplash.com/premium_photo-1687131786909-012d60e84943?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8VmlsbGFnZSUyMHZpc2l0cyUyQyUyMGxvY2FsJTIwbWFya2V0cyUyQyUyMGN1bHR1cmFsJTIwcGVyZm9ybWFuY2VzJTJDJTIwY29mZmVlJTJGdGVhJTIwcGxhbnRhdGlvbiUyMHRvdXJzJTIwaW4lMjB1Z2FuZGElMjBhbmQlMjByd2FuZGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Culture and Community">
+                    </div>
+                    
+                </div>
+
+                
+            </div>
+
+            <div class="destination-text">
+                <h2>Culture and community Tours</h2>
+                
+                <p>
+                   Culture and community tours in Uganda and Rwanda offer tourists a meaningful way to engage beyond the wildlife parks, providing authentic insights into the countries' rich heritage and social resilience.<br>
+                    In Rwanda, experiences often center around post-genocide reconstruction, visiting sites like the Iby’Iwacu Cultural Village near Volcanoes National Park (now known as the Gorilla Guardians Village), where former poachers have become performers and guides, </p>
+            </div>
+        </div>
+        <div class="plan-text">
+    <p>demonstrating traditional dances, crafts, and ancient king's rituals. Uganda's cultural landscape is highly diverse, featuring the intricate traditions of the Baganda Kingdom and visits to rural villages where tourists can participate in farming,
+         cooking, and craft-making. These community-based tourism initiatives are crucial for sustainable development, ensuring that tourism benefits local households, supports traditional arts, and offers visitors a deeper, more human connection to the people and history of the Great Lakes region.</p>
+        <div class="destination-text" style="text-align: center; color: #E27A27;">
+    --END OF CULTURE AND COMMUNITY TOURS DESCRIPTION--
+</div></div>
+     </section>
+
+    <!-- Kigali City and Day Trips -->
+     <section class="destination-section" id="kigali">
+        <div class="destination-content">
+            <div class="destination-images-wrapper">
+                <div class="destination-images">
+                    <div class="destination-img large">
+                        <img src="https://images.unsplash.com/photo-1598605170898-853b9ae903fc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8a2lnYWxpfGVufDB8fDB8fHww" alt="Kigali Tour">
+                    </div>
+                </div>
+            </div>
+            <div class="destination-text">
+                <h2>Kigali City and Day Trips</h2>
+                
+                <p>
+                   The vibrant city of Kigali serves as Rwanda’s dynamic and meticulously clean capital, offering tourists a sophisticated base for exploration before or after wildlife safaris.<br><BR>
+
+                   Known for its rolling hills, modern infrastructure, and booming arts scene, Kigali's centerpiece is the solemn Kigali Genocide Memorial, an essential and moving site for understanding the nation's history and its remarkable path to reconciliation.</p>
+            </div>
+        </div><br>
+        <div class="plan-text">
+    <p>Visitors can explore the Inema Arts Center and local craft markets like Caplaki, or enjoy the city's burgeoning culinary scene. Kigali's central location also makes it the perfect hub for easy day trips;
+         popular options include visiting the King's Palace Museum in Nyanza to explore pre-colonial royal history, or taking a scenic drive to the shores of Lake Kivu for relaxation and boat excursions,
+          providing a taste of Rwanda's stunning inland landscapes just hours from the capital.</p>
+        <div class="destination-text" style="text-align: center; color: #E27A27;">
+    --END OF KIGALI CITY AND DAY TRIPS DESCRIPTION--
+</div></div>
+     </section>
+    
+   
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Seek Wild Africa</h3>
+                <p>Your trusted partner for authentic, responsible safaris in Rwanda & Uganda. We create meaningful connections with nature, wildlife, and local communities.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#safaris">Safaris</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Safaris</h3>
+                <ul>
+                    <li><a href="#bwindi">Bwindi Gorilla Trekking</a></li>
+                    <li><a href="#kibale">Chimpanzee Tracking</a></li>
+                    <li><a href="#queen-elizabeth">Wildlife Safaris</a></li>
+                    <li><a href="#volcanoes">Cultural Tours</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 10px;">📧 info@seekwildafrica.com</li>
+                    <li style="margin-bottom: 10px;">📞 +250 788 586 735</li>
+                    <li style="margin-bottom: 10px;">💬 WhatsApp Available</li>
+                    <li>📍 Kigali, Rwanda</li>
+                    <div class="social-icons"><br>
+    <a href="https://www.instagram.com/mixventure/?hl=en" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+    </a>
+
+    <a href="https://www.facebook.com/mixvenagency/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+    </a>
+
+    <a href="https://www.linkedin.com/company/mix-venture/?originalSubdomain=rw" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+    </a>
+
+    <a href="https://www.linkedin.com/company/mix-venture/?originalSubdomain=rw" target="_blank">
+        <img src="https://media.istockphoto.com/id/2237772691/photo/3d-letter-x-logo-with-shadows.webp?a=1&b=1&s=612x612&w=0&k=20&c=bWlBwhYYJraFcQQsyqfqhWyfJYmqAYY58N4unZGuDFI=" alt="X">
+    </a>
+</div>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seek Wild Africa. All rights reserved. Designed with ❤️ for wildlife lovers</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

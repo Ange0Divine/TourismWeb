@@ -163,6 +163,22 @@ nav {
 .nav-links a:hover {
     color: #1F5E3B;
 }
+.mobile-quote {
+    display: block;
+    text-align: center;
+    margin: 8px 15px;
+    padding: 8px 12px;
+    background-color: #1f5e3b;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .mobile-quote:hover {
+    background-color: #15522e;
+  }
+
 
 .nav-btn {
     background: #1F5E3B; /* Forest Green */

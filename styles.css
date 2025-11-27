@@ -36,8 +36,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 50px;
-  background-color: #fff;
+  padding: 5px 50px;
+  background-color: #f3efea;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -137,15 +137,22 @@ nav {
 
   
 
+
 .logo {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: #1F5E3B; /* Forest Green */
+    color: #1F5E3B;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-family: 'Cormorant Garamond', serif;
+    gap: 0;
 }
+
+.logo img {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
 
 .nav-links {
     display: flex;

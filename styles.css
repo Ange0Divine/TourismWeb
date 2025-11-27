@@ -180,6 +180,12 @@ nav {
     background: #164a2e;
     box-shadow: 0 6px 20px rgba(31, 94, 59, 0.4);
 }
+/* Hide nav-btn on mobile devices */
+@media (max-width: 768px) {
+  .nav-btn {
+    display: none;
+  }
+}
 
 /* Hero Section */
 .hero {
@@ -960,16 +966,26 @@ section {
 .guide-avatar {
     width: 120px;
     height: 120px;
-    border-radius: 50%;
+    border-radius: 50%; /* Makes the container circular */
     margin: 0 auto 20px;
-    background: linear-gradient(135deg, #1F5E3B, #E27A27);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: white;
+    
+    /* Crucial: Hides anything (like the edges of the square image) that extends outside the circular border */
+    overflow: hidden; 
+    
+    /* Remove old gradient/text styles */
+    /* background: linear-gradient(135deg, #1F5E3B, #E27A27); */
+    /* display: flex; align-items: center; justify-content: center; */
 }
 
+/* NEW: Styles for the image inside the container */
+.guide-avatar img {
+    display: block; /* Ensures the image behaves predictably */
+    width: 100%;    /* Forces the image to fill the 120px width of its parent */
+    height: 100%;   /* Forces the image to fill the 120px height of its parent */
+    
+    /* Ensures the image covers the entire area without stretching, like 'background-size: cover;' */
+    object-fit: cover; 
+}
 .guide-name {
     font-size: 1.3rem;
     margin-bottom: 5px;

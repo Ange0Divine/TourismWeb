@@ -219,7 +219,7 @@ if (newsletterForm) {
 document.addEventListener('DOMContentLoaded', function() {
     // Replace with your actual WhatsApp number (include country code without + or spaces)
     // Example: For +250 788 123 456, use: 250788123456
-    const whatsappNumber = '250788586735'; // REPLACE THIS WITH YOUR ACTUAL NUMBER
+    const whatsappNumber = '250787266550'; // REPLACE THIS WITH YOUR ACTUAL NUMBER
     
     // Find all WhatsApp buttons
     const whatsappButtons = document.querySelectorAll('a[href="#whatsapp"]');

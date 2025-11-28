@@ -522,8 +522,8 @@ section {
 
 .destination-large {
     position: relative;
-    min-width: 380px;
-    height: 500px;
+    min-width: 300px;
+    height: 400px;
     border-radius: 25px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);

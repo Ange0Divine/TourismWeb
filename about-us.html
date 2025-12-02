@@ -31,11 +31,18 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="page-container" style="padding-top: 120px; padding-bottom: 0;">
-        <div class="page-header">
-            <p class="section-subtitle">WHO WE ARE</p>
-            <h1 class="section-title">About Seek Wild Africa</h1>
-            <p style="max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.2rem; color: #666;">
+    <section style="position: relative; padding: 140px 5% 60px; overflow: hidden; min-height: 300px; display: flex; align-items: center; justify-content: center;">
+        <!-- Background Image with Blur -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('images/Seek Wild Africa  (7).jpeg'); background-size: cover; background-position: center; filter: blur(8px) brightness(0.6); z-index: 1;"></div>
+        
+        <!-- Overlay -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(31, 94, 59, 0.7) 0%, rgba(226, 122, 39, 0.5) 100%); z-index: 2;"></div>
+        
+        <!-- Content -->
+        <div class="page-header" style="position: relative; z-index: 3; color: white; text-align: center;">
+            <p class="section-subtitle" style="color: #F4E9DA;">WHO WE ARE</p>
+            <h1 class="section-title" style="color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.3);">About Seek Wild Africa</h1>
+            <p style="max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.2rem; color: white; text-shadow: 1px 1px 5px rgba(0,0,0,0.3);">
                 Your trusted safari company in Rwanda and Uganda, bringing you closer to Africa's most breathtaking wildlife and landscapes.
             </p>
         </div>
